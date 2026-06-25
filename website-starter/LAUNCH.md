@@ -6,6 +6,11 @@ Audience: whoever pushes it live (Derek). Full background is in [`BRIEF.md` §10
 > The site is **static HTML**. There is no backend to run — you build `dist/` and upload it.
 > The quote form posts to Web3Forms (already configured), so nothing server-side is needed.
 
+> **Already live (2026-06-25):** the site shipped via **Docker behind a Caddy reverse proxy**
+> (`Dockerfile` + `docker-compose.yml` + `nginx.conf`), not the cPanel/FTP path below. See
+> [`PROJECT-SUMMARY.md` §7](./PROJECT-SUMMARY.md) for the live setup + the one-line redeploy
+> (`docker compose up -d --build`). The steps below remain valid as the **manual fallback**.
+
 ---
 
 ## 1. Build the site
@@ -86,6 +91,6 @@ file backup). Nothing in a database to migrate.
 
 - **Logo:** the masthead/footer use the inlined ER diamond mark (`src/design/components/BrandMark.astro`);
   final logo art is a pending task.
-- **LinkedIn:** `src/data/site.ts` uses the personal profile; `public/contact.vcf` uses the
-  company page — standardise if desired.
+- **LinkedIn:** standardised to the **company page** everywhere (`src/data/site.ts` and
+  `public/contact.vcf`).
 - Licence numbers (`SITE.licenses`) and the "Office" phone label are confirmed for live.
