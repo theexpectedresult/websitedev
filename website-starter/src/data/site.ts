@@ -28,7 +28,7 @@ export const SITE = {
   phoneMobile: "778-246-2492",
   phoneOffice: "778-808-8769",   // labelling: pamphlets use "Office" — confirm vs. live site
   email: "results@ertechservices.ca",
-  linkedin: "https://www.linkedin.com/in/vinceyost/",
+  linkedin: "https://www.linkedin.com/company/expected-result-technical-services-corporation/",
 
   // --- Licensing (CONFIRM exact designation/numbers off the letterhead) ---
   licenses: [
