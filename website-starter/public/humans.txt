@@ -1,0 +1,54 @@
+/* ─────────────────────────────────────────────────────────────────────
+   ER TECH SERVICES — the humans behind the wires
+   Expected Result Technical Services Corporation · Langley, BC
+   ───────────────────────────────────────────────────────────────────── */
+
+   Hi there, fellow human. (Robots have their own file — see /robots.txt.)
+
+   This site was built by actual people who live and work right here in
+   Greater Vancouver — not a national chain, not a call centre three time
+   zones away. When you phone us, a local picks up. When we quote you, we
+   mean it. And when something needs fixing, the same team that installed
+   it is the team that comes back.
+
+   To us you're a name and a handshake — never a ticket number.
+
+
+/* TEAM */
+
+   Founder & Lead Integrator .. Vince
+   Home base .................. Langley, BC, Canada
+   Reach a human .............. results@ertechservices.ca
+                                Office 778-808-8769 · Mobile 778-246-2492
+
+   What we do ................. Security · Video Surveillance · Access Control
+                                Networks · Front Desk & Workspace · AV
+   Licensed & certified ....... Security Consultant Lic. #B7128
+                                TSBC LIC-00214786
+   We work in the good gear ... Control4 · Crestron · Lutron · Avigilon
+                                Alarm.com · DSC PowerG · Araknis · UniFi
+
+
+/* WHERE WE WORK */
+
+   "From Pemberton to Hope and the Sunshine Coast's shore —
+    Metro, the Island, the Gulf, and a whole lot more."
+
+
+/* THANKS */
+
+   To every client who chose the local team — we don't take it for granted.
+   And to our residential side, The Expected Result, for keeping homes
+   across the coast smart, safe and sound.
+
+
+/* SITE */
+
+   Last updated ............... 2026-06-24
+   Language ................... English
+   Built with ................. Astro · HTML5 · CSS3
+   Type ....................... Barlow · Barlow Semi Condensed · JetBrains Mono
+   Colours .................... Teal #39c6c0 · Deep teal #1f6d6a · Ink #1a2230
+   Standards .................. Responsive, accessible, and quick on its feet
+
+                  Front door to back office — under one roof.
