@@ -1,0 +1,43 @@
+/* src/design/fonts.css
+   Self-hosted Barlow + Barlow Semi Condensed (latin subset, woff2) so the site
+   matches the pamphlets exactly with no Google Fonts network dependency.
+   Files live in public/fonts/ and are served from the site root at /fonts/. */
+
+/* ---- Barlow — body copy (400 / 500 / 600) ---- */
+@font-face {
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/barlow-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/barlow-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/barlow-600.woff2") format("woff2");
+}
+
+/* ---- Barlow Semi Condensed — headings, wordmark, card caps (600 / 700) ---- */
+@font-face {
+  font-family: "Barlow Semi Condensed";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/barlow-semi-condensed-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Barlow Semi Condensed";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/barlow-semi-condensed-700.woff2") format("woff2");
+}

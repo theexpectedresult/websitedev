@@ -1,0 +1,232 @@
+---
+// src/pages/insurance/index.astro — Insurance Savings
+// Marketing page built from the insurance flyer copy + SITE.promos.
+// Uses the "with figures" flyer for the printable download (SITE.promos[0].flyer).
+// NOTE: figures (5–20%, $75–$300) and named insurers need periodic fact-checking.
+import Base from "../../layouts/Base.astro";
+import PageHero from "../../design/components/PageHero.astro";
+import CtaBar from "../../design/components/CtaBar.astro";
+import { SITE } from "../../data/site";
+
+const promo = SITE.promos[0];
+const insurers = ["Aviva", "Intact", "Allstate", "Desjardins"];
+---
+
+<Base
+  title="Insurance Savings"
+  description="A professionally monitored security system can lower home & business insurance premiums by 5–20%. ULC-certified monitoring, water-leak detection and automatic shutoff — ER Tech Services."
+>
+  <PageHero
+    eyebrow="Insurance Savings"
+    title="Your security system could lower your premiums"
+    subtitle="We install more than security — we install peace of mind that pays for itself."
+    company={false}
+  />
+
+  <section class="container body">
+    <!-- stats -->
+    <div class="stats">
+      <div class="stat">
+        <div class="big">5%–20%</div>
+        <div class="lbl">
+          Typical discount on home &amp; business premiums with a professionally monitored
+          system.
+        </div>
+      </div>
+      <div class="stat">
+        <div class="big">$75–$300</div>
+        <div class="lbl">Back in your pocket every year on a typical policy.</div>
+      </div>
+    </div>
+
+    <!-- monitoring -->
+    <h2>Professional monitoring is the key</h2>
+    <p>
+      Many Canadian insurance providers offer discounts of 5% to 20% on home and business
+      insurance premiums when a professionally monitored security system is in place. The key
+      to maximizing your discount is professional, third-party monitoring through a
+      <b>ULC-certified monitoring centre</b> — exactly what ER Tech Services provides.
+    </p>
+    <p>
+      Insurers reward systems that actively reduce risk, and the more comprehensive your
+      protection, the greater the potential savings. Systems that combine intrusion
+      detection, fire monitoring, and environmental sensors such as water-leak and freeze
+      detectors tend to qualify for the highest discounts.
+    </p>
+
+    <!-- water -->
+    <h2>Water damage: the claim insurers fear most</h2>
+    <p>
+      Water damage is one of the most costly insurance claims in Canada, and insurers are now
+      recognizing water-leak detection devices with reduced premiums — particularly systems
+      that can automatically shut off water at the source.
+    </p>
+
+    <div class="insurers">
+      <p class="lead">Insurers recognizing water-leak protection include:</p>
+      <ul class="chips">
+        {insurers.map((i) => <li>{i}</li>)}
+      </ul>
+    </div>
+
+    <div class="feature">
+      <h3>💧 Detection + automatic shutoff — what insurers value most</h3>
+      <p>
+        We install complete water-protection solutions, including the <b
+          >Alarm.com inline smart water valve</b
+        >, which monitors for slow leaks and unexpected water usage and can automatically
+        shut off your water supply before serious damage occurs. This level of protection —
+        detection plus automatic shutoff — is exactly what insurers value most when applying
+        premium discounts.
+      </p>
+    </div>
+
+    <p class="closing">
+      Whether you're protecting a home, a rental property, or a commercial space, ER Tech
+      Services can design and install a monitored system that not only keeps your property
+      safe but may help offset the cost of your insurance year after year. Ask your insurance
+      provider about available discounts, and <b
+        >ask us about the monitoring certificate</b
+      > you'll need to claim them.
+    </p>
+
+    <!-- flyer download -->
+    <div class="downloads">
+      <a class="op-btn" href={promo.flyer} target="_blank" rel="noopener">
+        <span aria-hidden="true">🖨️</span> View / print the insurance flyer
+      </a>
+      <span class="op-note">Printable one-page handout.</span>
+    </div>
+  </section>
+
+  <CtaBar
+    title="Find out what it could save you."
+    text="We'll design the right monitored system for your property — and hand you the certificate your insurer needs."
+  />
+</Base>
+
+<style>
+  .body {
+    max-width: 820px;
+    padding: 48px 0 16px;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .stat {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 20px 22px;
+    background: linear-gradient(160deg, #eef7f3, #e2f0ea);
+  }
+  .stat .big {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 34px;
+    color: var(--acc);
+    line-height: 1;
+  }
+  .stat .lbl {
+    font-size: 14.5px;
+    color: #2a3a47;
+    margin-top: 8px;
+    line-height: 1.35;
+  }
+  .body h2 {
+    font-size: 24px;
+    color: #15323f;
+    margin: 26px 0 8px;
+  }
+  .body p {
+    font-size: 16.5px;
+    line-height: 1.6;
+    color: #36424f;
+    margin: 0 0 14px;
+  }
+  .insurers {
+    margin: 18px 0;
+  }
+  .insurers .lead {
+    font-size: 14px;
+    color: #4a5a67;
+    font-weight: 600;
+    margin: 0 0 10px;
+  }
+  .chips {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .chips li {
+    border: 1px solid var(--line);
+    background: #fff;
+    border-radius: 999px;
+    padding: 7px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #15323f;
+  }
+  .feature {
+    margin: 20px 0;
+    border: 1px solid #c7d6e6;
+    border-left: 5px solid var(--net);
+    border-radius: 10px;
+    background: linear-gradient(160deg, #eef3fb, #dceaf6);
+    padding: 20px 22px;
+  }
+  .feature h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 19px;
+    color: #2c2f73;
+    margin: 0 0 8px;
+  }
+  .feature p {
+    font-size: 15.5px;
+    margin: 0;
+  }
+  .closing {
+    margin-top: 18px;
+  }
+  .downloads {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin: 28px 0 8px;
+  }
+  .op-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 15.5px;
+    color: var(--net);
+    background: #fff;
+    border: 1.5px solid var(--net);
+    border-radius: 10px;
+    padding: 11px 18px;
+    text-decoration: none;
+  }
+  .op-btn:hover {
+    background: var(--net);
+    color: #fff;
+    text-decoration: none;
+  }
+  .op-note {
+    font-size: 13px;
+    color: #5a6675;
+  }
+  @media (max-width: 560px) {
+    .stats {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,93 @@
+---
+// src/layouts/Base.astro
+// Shared shell for every page: <head> (fonts, tokens, meta/OG), Masthead, SiteFooter.
+import "../design/fonts.css";
+import "../design/tokens.css";
+import "../design/base.css";
+import { SITE } from "../data/site";
+import Masthead from "../design/components/Masthead.astro";
+import SiteFooter from "../design/components/SiteFooter.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** Path-only canonical, e.g. "/services/". Defaults to the current page. */
+  ogImage?: string;
+  /** Hide the masthead + footer (used by the standalone component-review page). */
+  bare?: boolean;
+}
+
+const {
+  title,
+  description = "ER Tech Services — commercial security, video, access, networks & AV, front door to back office. " +
+    SITE.legalEntity + ", " + SITE.city + ".",
+  ogImage = "/brand/ertech-mark.png",
+  bare = false,
+} = Astro.props;
+
+const pageTitle = title
+  ? `${title} — ${SITE.brand}`
+  : `${SITE.brand} — ${SITE.tagline}`;
+
+const canonical = new URL(Astro.url.pathname, SITE.domain).href;
+const ogImageUrl = new URL(ogImage, SITE.domain).href;
+
+// Keep meta descriptions in the ~155–160 char range search engines display.
+const metaDescription =
+  description.length > 160
+    ? description.slice(0, 157).replace(/\s+\S*$/, "").trimEnd() + "…"
+    : description;
+---
+
+<!doctype html>
+<html lang="en-CA">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={metaDescription} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Preload the two most-used faces to avoid a flash -->
+    <link
+      rel="preload"
+      href="/fonts/barlow-400.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/barlow-semi-condensed-700.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!-- Favicons / manifest (assets already in public/) -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#1f6d6a" />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.brand} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    {!bare && <Masthead />}
+    <main id="main">
+      <slot />
+    </main>
+    {!bare && <SiteFooter />}
+  </body>
+</html>

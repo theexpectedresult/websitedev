@@ -1,0 +1,447 @@
+---
+// src/pages/index.astro — Home
+// Hero, six pillars at a glance, insurance promo, SMA teaser, industries row,
+// service area + ecosystems, residential cross-link, CTA. Content from data files.
+import Base from "../layouts/Base.astro";
+import ServiceCard from "../design/components/ServiceCard.astro";
+import SmaTiers from "../design/components/SmaTiers.astro";
+import CtaBar from "../design/components/CtaBar.astro";
+import { SITE } from "../data/site";
+import { offerings, industries } from "../data/services";
+
+const general = offerings.general;
+const promo = SITE.promos[0];
+
+const accent = SITE.brandAccentWord;
+const [bBefore, bAfter] = SITE.brand.split(accent);
+
+const ICON: Record<string, string> = {
+  restaurants: "🍔",
+  "retail-pet": "🛍️",
+  "small-business": "🏪",
+  clinics: "🩺",
+  schools: "🏫",
+};
+---
+
+<Base>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <p class="eyebrow">{SITE.legalEntity}</p>
+      <h1>
+        One trusted partner —<br />
+        <span class="grad">front door to back office.</span>
+      </h1>
+      <p class="lede">
+        {bBefore}<b class="accent">{accent}</b>{bAfter} designs, installs and supports the
+        security, video, access, network and AV systems that keep your business secure,
+        connected and running smoothly — all under one roof.
+      </p>
+      <div class="hero-cta">
+        <a class="btn primary" href="/quote/">Book a Walkthrough</a>
+        <a class="btn ghost" href="/services/">See the six pillars</a>
+      </div>
+      <p class="hero-area">{SITE.serviceAreaLine}</p>
+    </div>
+  </section>
+
+  <!-- PILLARS AT A GLANCE -->
+  <section class="container section">
+    <div class="sechead">
+      <h2>Everything, under one roof</h2>
+      <a class="seeall" href="/services/">All services & SMA →</a>
+    </div>
+    <div class="rule"></div>
+    <div class="grid">
+      {
+        general.pillars.map((p) => (
+          <ServiceCard accent={p.accent} icon={p.icon} title={p.title} items={p.items} />
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- INSURANCE PROMO -->
+  {
+    promo && (
+      <section class="promo">
+        <div class="container promo-inner">
+          <div class="promo-ic" aria-hidden="true">🛡️</div>
+          <div class="promo-copy">
+            <h2>{promo.title}</h2>
+            <p>{promo.hook}</p>
+          </div>
+          <a class="btn primary" href={promo.href}>{promo.cta}</a>
+        </div>
+      </section>
+    )
+  }
+
+  <!-- SMA TEASER -->
+  <section class="container section">
+    <div class="sechead">
+      <h2>Service & Maintenance Agreements</h2>
+      <a class="seeall" href="/services/#sma">How SMA works →</a>
+    </div>
+    <div class="rule"></div>
+    <div class="sma-teaser">
+      <SmaTiers />
+    </div>
+  </section>
+
+  <!-- INDUSTRIES ROW -->
+  <section class="container section">
+    <div class="sechead">
+      <h2>Tailored to your industry</h2>
+      <a class="seeall" href="/industries/">All industries →</a>
+    </div>
+    <div class="rule"></div>
+    <ul class="ind-row">
+      {
+        industries.map((o) => (
+          <li>
+            <a href={`/industries/${o.slug}/`}>
+              <span class="ic" aria-hidden="true">{ICON[o.slug] ?? "🏢"}</span>
+              <span class="lbl">{o.audience.replace(/^For\s+/i, "")}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <!-- SERVICE AREA + ECOSYSTEMS -->
+  <section class="band">
+    <div class="container band-grid">
+      <div>
+        <h2>Where we work</h2>
+        <p class="band-lede">{SITE.serviceAreaLine}</p>
+        <ul class="chips">
+          {SITE.serviceArea.map((a) => <li>{a}</li>)}
+        </ul>
+      </div>
+      <div>
+        <h2>Ecosystems we build in</h2>
+        <p class="band-lede">
+          Pro-grade platforms we design, install and support — no big-box runaround.
+        </p>
+        <ul class="chips alt">
+          {SITE.ecosystems.map((e) => <li>{e}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESIDENTIAL CROSS-LINK -->
+  <section class="container resi-wrap">
+    <div class="resi">
+      <div>
+        <p class="resi-eyebrow">Looking for home / residential?</p>
+        <p class="resi-blurb">{SITE.residential.blurb}</p>
+      </div>
+      <a class="btn ghost dark" href={SITE.residential.url} rel="noopener">
+        {SITE.residential.label} →
+      </a>
+    </div>
+  </section>
+
+  <CtaBar />
+</Base>
+
+<style>
+  /* HERO */
+  .hero {
+    background: var(--grad-header-left);
+    color: #eafdfb;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(560px 420px at 88% 18%, rgba(57, 198, 192, 0.14), transparent 70%),
+      radial-gradient(520px 420px at 96% 92%, rgba(120, 60, 140, 0.12), transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    position: relative;
+    padding: 72px 0 64px;
+  }
+  .eyebrow {
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8fd8d0;
+    font-weight: 600;
+    margin: 0 0 12px;
+  }
+  .hero h1 {
+    font-size: clamp(34px, 6vw, 60px);
+    line-height: 1.02;
+    color: #fff;
+    margin: 0;
+  }
+  .hero h1 .grad {
+    background: linear-gradient(120deg, #b78a2e, #c98fd0 45%, #7f87e6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .lede {
+    max-width: 62ch;
+    margin: 18px 0 0;
+    font-size: 18px;
+    line-height: 1.5;
+    color: #d4ece8;
+  }
+  .lede .accent {
+    color: var(--brand);
+  }
+  .hero-cta {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 26px;
+  }
+  .hero-area {
+    margin-top: 22px;
+    font-size: 13.5px;
+    color: #9fc4be;
+  }
+
+  /* buttons (shared) */
+  .btn {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 16px;
+    padding: 13px 22px;
+    border-radius: 10px;
+    text-decoration: none;
+    white-space: nowrap;
+    display: inline-block;
+  }
+  .btn.primary {
+    color: #08231f;
+    background: var(--brand);
+    box-shadow: 0 2px 12px rgba(57, 198, 192, 0.35);
+  }
+  .btn.primary:hover {
+    background: #57d6d0;
+    text-decoration: none;
+  }
+  .btn.ghost {
+    color: #eafdfb;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+  }
+  .btn.ghost:hover {
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+    text-decoration: none;
+  }
+  .btn.ghost.dark {
+    color: var(--net);
+    border-color: var(--net);
+  }
+  .btn.ghost.dark:hover {
+    background: var(--net);
+    color: #fff;
+  }
+
+  /* section heads */
+  .sechead {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .sechead h2 {
+    font-size: 30px;
+    margin: 0;
+  }
+  .seeall {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--net);
+    font-size: 15px;
+  }
+  .rule {
+    margin: 8px 0 22px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  /* promo */
+  .promo {
+    background: var(--grad-intro);
+    color: #fff;
+  }
+  .promo-inner {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 30px 0;
+    flex-wrap: wrap;
+  }
+  .promo-ic {
+    font-size: 40px;
+    line-height: 1;
+  }
+  .promo-copy {
+    flex: 1 1 360px;
+  }
+  .promo-copy h2 {
+    font-size: 23px;
+    color: #fff;
+    margin: 0 0 4px;
+  }
+  .promo-copy p {
+    margin: 0;
+    font-size: 15.5px;
+    color: #fdeede;
+    max-width: 70ch;
+  }
+
+  .sma-teaser {
+    max-width: 640px;
+  }
+
+  /* industries row */
+  .ind-row {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+  }
+  .ind-row a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    padding: 20px 12px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    color: var(--ink);
+    text-decoration: none;
+    height: 100%;
+  }
+  .ind-row a:hover {
+    border-color: #c2cdda;
+    box-shadow: 0 8px 22px rgba(20, 32, 43, 0.1);
+    text-decoration: none;
+  }
+  .ind-row .ic {
+    font-size: 28px;
+  }
+  .ind-row .lbl {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 14.5px;
+    line-height: 1.15;
+  }
+
+  /* band */
+  .band {
+    background: #f4f7fa;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin-top: 8px;
+  }
+  .band-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 52px 0;
+  }
+  .band h2 {
+    font-size: 24px;
+    margin: 0 0 8px;
+  }
+  .band-lede {
+    color: #44505f;
+    font-size: 15px;
+    margin: 0 0 14px;
+    max-width: 52ch;
+  }
+  .chips {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .chips li {
+    border: 1px solid var(--line);
+    background: #fff;
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #15323f;
+  }
+  .chips.alt li {
+    border-color: #c9d3e6;
+    color: var(--net);
+  }
+
+  /* residential cross-link */
+  .resi-wrap {
+    padding: 48px 0;
+  }
+  .resi {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    border: 1px dashed #c2cdda;
+    border-radius: 14px;
+    padding: 26px 28px;
+    background: #fff;
+  }
+  .resi-eyebrow {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 18px;
+    margin: 0 0 4px;
+  }
+  .resi-blurb {
+    margin: 0;
+    color: #44505f;
+    font-size: 15px;
+  }
+
+  @media (max-width: 920px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .ind-row {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media (max-width: 760px) {
+    .band-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+  @media (max-width: 600px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+    .ind-row {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

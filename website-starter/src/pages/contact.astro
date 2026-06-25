@@ -1,0 +1,238 @@
+---
+// src/pages/contact.astro
+// Phones, obfuscated email, vCard download + QR, service area. No street address
+// (Langley, BC only — it's the owner's residence).
+import Base from "../layouts/Base.astro";
+import PageHero from "../design/components/PageHero.astro";
+import { SITE } from "../data/site";
+
+const [emailUser, emailDomain] = SITE.email.split("@");
+const telOffice = SITE.phoneOffice.replace(/[^0-9+]/g, "");
+const telMobile = SITE.phoneMobile.replace(/[^0-9+]/g, "");
+---
+
+<Base
+  title="Contact"
+  description={`Contact ER Tech Services — ${SITE.city}. Office ${SITE.phoneOffice}, mobile ${SITE.phoneMobile}. Save our vCard or scan the QR code.`}
+>
+  <PageHero
+    eyebrow="Contact"
+    title="Let's talk about your space"
+    subtitle="Calls and email get a real reply — usually same day."
+    company={false}
+  />
+
+  <section class="container grid">
+    <!-- Reach us -->
+    <div class="col">
+      <h2>Reach us</h2>
+      <ul class="lines">
+        <li>
+          <span class="k">Office</span>
+          <a href={`tel:${telOffice}`}>{SITE.phoneOffice}</a>
+        </li>
+        <li>
+          <span class="k">Mobile</span>
+          <a href={`tel:${telMobile}`}>{SITE.phoneMobile}</a>
+        </li>
+        <li>
+          <span class="k">Email</span>
+          <a
+            id="email-link"
+            href="#"
+            data-user={emailUser}
+            data-domain={emailDomain}
+          >
+            email us
+          </a>
+          <noscript>{emailUser} [at] {emailDomain}</noscript>
+        </li>
+        <li>
+          <span class="k">Area</span>
+          <span>{SITE.city}</span>
+        </li>
+        <li>
+          <span class="k">LinkedIn</span>
+          <a href={SITE.linkedin} rel="noopener">vinceyost</a>
+        </li>
+      </ul>
+      <p class="note">
+        We list a city, not a street — the shop is run from a private residence. Service is
+        mobile across the region below.
+      </p>
+    </div>
+
+    <!-- vCard + QR -->
+    <div class="col vcard">
+      <h2>Save our contact</h2>
+      <div class="qr-wrap">
+        <img
+          src="/brand/qr/qr-contact-vcard.svg"
+          alt="QR code containing ER Tech Services contact details — scan to save"
+          width="180"
+          height="180"
+        />
+      </div>
+      <p class="qr-note">Scan to save us to your phone (works offline).</p>
+      <a class="btn primary" href="/contact.vcf" download>Download vCard (.vcf)</a>
+    </div>
+  </section>
+
+  <!-- Service area -->
+  <section class="band">
+    <div class="container">
+      <h2>Where we work</h2>
+      <p class="band-lede">{SITE.serviceAreaLine}</p>
+      <ul class="chips">
+        {SITE.serviceArea.map((a) => <li>{a}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <!-- secondary CTA to the form -->
+  <section class="container booknote">
+    <p>
+      Prefer to write it down? <a href="/quote/">Book a walkthrough</a> and tell us about
+      your space.
+    </p>
+  </section>
+</Base>
+
+<script>
+  // Light email obfuscation: assemble the address client-side.
+  const a = document.getElementById("email-link") as HTMLAnchorElement | null;
+  if (a) {
+    const addr = `${a.dataset.user}@${a.dataset.domain}`;
+    a.href = `mailto:${addr}`;
+    a.textContent = addr;
+  }
+</script>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 40px;
+    padding: 52px 0;
+    align-items: start;
+  }
+  .col h2 {
+    font-size: 26px;
+    margin: 0 0 16px;
+  }
+  .lines {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .lines li {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 17px;
+  }
+  .lines .k {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: #6a7785;
+    width: 86px;
+    flex: none;
+  }
+  .note {
+    margin-top: 18px;
+    font-size: 14px;
+    color: #5a6675;
+    max-width: 46ch;
+  }
+
+  .vcard {
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 26px;
+    background: #f7fafc;
+    text-align: center;
+  }
+  .qr-wrap {
+    display: inline-flex;
+    padding: 14px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+  }
+  .qr-note {
+    font-size: 13.5px;
+    color: #5a6675;
+    margin: 12px 0 16px;
+  }
+  .btn.primary {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 16px;
+    color: #08231f;
+    background: var(--brand);
+    border-radius: 10px;
+    padding: 12px 22px;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 2px 12px rgba(57, 198, 192, 0.35);
+  }
+  .btn.primary:hover {
+    background: #57d6d0;
+    text-decoration: none;
+  }
+
+  .band {
+    background: #f4f7fa;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 44px 0;
+  }
+  .band h2 {
+    font-size: 24px;
+    margin: 0 0 8px;
+  }
+  .band-lede {
+    color: #44505f;
+    font-size: 15px;
+    margin: 0 0 14px;
+    max-width: 60ch;
+  }
+  .chips {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .chips li {
+    border: 1px solid var(--line);
+    background: #fff;
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #15323f;
+  }
+
+  .booknote {
+    padding: 36px 0 8px;
+    text-align: center;
+  }
+  .booknote p {
+    font-size: 16px;
+    color: #44505f;
+  }
+
+  @media (max-width: 820px) {
+    .grid {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+  }
+</style>

@@ -1,0 +1,43 @@
+---
+// src/design/components/BrandMark.astro
+// The ER diamond monogram, inlined so the --er-* custom properties recolour it.
+// Defaults are tuned for dark backgrounds (white letters, brand-cyan dots, faint
+// light shadow). Pass `size` (px height) to scale.
+interface Props {
+  size?: number;
+}
+const { size = 42 } = Astro.props;
+---
+
+<span class="logo-mark" style={`--mark-h:${size}px`} aria-hidden="true">
+  <svg viewBox="0 0 880 500">
+    <path d="M 212 50 L 412 250 L 212 450 L 12 250 Z" fill="var(--er-shadow,#D2D2D2)"></path>
+    <path d="M 612 50 L 812 250 L 612 450 L 412 250 Z" fill="var(--er-shadow,#D2D2D2)"></path>
+    <path d="M 240 50 L 440 250 L 240 450 L 40 250 Z" fill="var(--er-cyan,#13A2CA)"></path>
+    <path d="M 640 50 L 840 250 L 640 450 L 440 250 Z" fill="var(--er-blue,#1274BB)"></path>
+    <path transform="translate(240 250) scale(0.13059 -0.13059) translate(-711.50 -704.50)" d="M137 0V1409H1245V1181H432V827H1184V599H432V228H1286V0Z" fill="var(--er-letter,#FFFFFF)"></path>
+    <path transform="translate(640 250) scale(0.13059 -0.13059) translate(-787.00 -704.50)" d="M1105 0 778 535H432V0H137V1409H841Q1093 1409 1230.0 1300.5Q1367 1192 1367 989Q1367 841 1283.0 733.5Q1199 626 1056 592L1437 0ZM1070 977Q1070 1180 810 1180H432V764H818Q942 764 1006.0 820.0Q1070 876 1070 977Z" fill="var(--er-letter,#FFFFFF)"></path>
+    <path d="M 430.0 334 L 447.0 351 L 430.0 368 L 413.0 351 Z" fill="var(--er-dots,#3C3C3C)"></path>
+    <path d="M 430.0 388 L 447.0 405 L 430.0 422 L 413.0 405 Z" fill="var(--er-dots,#3C3C3C)"></path>
+    <path d="M 403.0 361 L 420.0 378 L 403.0 395 L 386.0 378 Z" fill="var(--er-dots,#3C3C3C)"></path>
+    <path d="M 457.0 361 L 474.0 378 L 457.0 395 L 440.0 378 Z" fill="var(--er-dots,#3C3C3C)"></path>
+  </svg>
+</span>
+
+<style>
+  .logo-mark {
+    display: inline-flex;
+    align-items: center;
+    /* Dark-background palette (overridable by the parent) */
+    --er-cyan: #13a2ca;
+    --er-blue: #1274bb;
+    --er-letter: #ffffff;
+    --er-shadow: rgba(255, 255, 255, 0.16);
+    --er-dots: var(--brand);
+  }
+  .logo-mark svg {
+    height: var(--mark-h, 42px);
+    width: auto;
+    display: block;
+  }
+</style>

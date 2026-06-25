@@ -1,0 +1,104 @@
+---
+// src/design/components/OfferingBody.astro
+// Shared body for the Services overview + every industry page: intro banner,
+// the six pillar cards, the Additional Support block (with the #sma anchor),
+// and the "view / print one-pager" button. All content from the Offering.
+import type { Offering } from "../../data/services";
+import IntroBanner from "./IntroBanner.astro";
+import ServiceCard from "./ServiceCard.astro";
+import SupportPanels from "./SupportPanels.astro";
+
+interface Props {
+  offering: Offering;
+  /** Emoji shown in the intro banner. */
+  introIcon?: string;
+}
+const { offering, introIcon = "\u{1F3E0}" } = Astro.props;
+---
+
+<div class="container body">
+  <IntroBanner icon={introIcon} text={offering.intro} />
+
+  <h2 class="sectitle">{offering.sectionTitle}</h2>
+  <div class="rule"></div>
+
+  <div class="grid">
+    {
+      offering.pillars.map((p) => (
+        <ServiceCard accent={p.accent} icon={p.icon} title={p.title} items={p.items} />
+      ))
+    }
+  </div>
+
+  <h2 id="sma" class="sectitle">ADDITIONAL SUPPORT</h2>
+  <div class="rule"></div>
+
+  <SupportPanels support={offering.support} />
+
+  <div class="onepager">
+    <a class="op-btn" href={offering.onePager} target="_blank" rel="noopener">
+      <span aria-hidden="true">🖨️</span> View / print this one-pager
+    </a>
+    <span class="op-note">Opens the printable card-stock sheet (11×17 tabloid).</span>
+  </div>
+</div>
+
+<style>
+  .body {
+    padding: 40px 0 8px;
+    display: flow-root;
+  }
+  .sectitle {
+    font-size: 30px;
+    font-weight: 700;
+    margin: 40px 0 6px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .onepager {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin: 28px 0 8px;
+  }
+  .op-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 15.5px;
+    color: var(--net);
+    background: #fff;
+    border: 1.5px solid var(--net);
+    border-radius: 10px;
+    padding: 11px 18px;
+    text-decoration: none;
+  }
+  .op-btn:hover {
+    background: var(--net);
+    color: #fff;
+    text-decoration: none;
+  }
+  .op-note {
+    font-size: 13px;
+    color: #5a6675;
+  }
+  @media (max-width: 920px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 600px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+    .sectitle {
+      font-size: 25px;
+    }
+  }
+</style>

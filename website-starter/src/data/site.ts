@@ -14,16 +14,17 @@ export const SITE = {
   // NOTE: never publish the street address (it is Vince's residence). City only.
   city: "Langley, BC",
   serviceArea: [
-    "Sea-to-Sky / Pemberton",
-    "Squamish & Whistler",
+    "Pemberton to Hope",
+    "Sea-to-Sky",
     "Metro Vancouver",
-    "Fraser Valley to Hope",
-    "Vancouver Island",
-    "Gulf Islands",
+    "Fraser Valley",
     "Sunshine Coast",
+    "Gulf Islands",
+    "Vancouver Island",
+    "Remote BC",
   ],
   serviceAreaLine:
-    "From Pemberton through the Fraser Valley to Hope, across Metro Vancouver, Vancouver Island, the Gulf Islands & the Sunshine Coast.",
+    "From Pemberton to Hope, including the Sunshine Coast, Gulf Islands, Vancouver Island, and remote locations throughout BC.",
   phoneMobile: "778-246-2492",
   phoneOffice: "778-808-8769",   // labelling: pamphlets use "Office" — confirm vs. live site
   email: "results@ertechservices.ca",
@@ -76,8 +77,22 @@ export const SITE = {
     },
   ],
 
-  // --- Quote form endpoint (fill in Formspree/Web3Forms key or host mailer) ---
-  formEndpoint: "REPLACE_WITH_FORM_ENDPOINT",
+  // --- Quote form (Web3Forms — recommended) ---------------------------------------
+  // The QuoteForm posts to `formEndpoint` and sends `formAccessKey` as the credential.
+  // ENABLE IT IN ONE STEP (free, no account):
+  //   1. Go to  https://web3forms.com
+  //   2. Under "Create your Access Key", enter  results@ertechservices.ca
+  //   3. Open that inbox, click the confirmation link, copy the Access Key (a UUID
+  //      like 1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d)
+  //   4. Paste it as `formAccessKey` below, replacing the placeholder. Done — rebuild.
+  // Until the key is set, the form shows a friendly notice + disabled submit (no broken
+  // posts). Submissions are emailed to the address you registered the key with above.
+  //
+  // Prefer Formspree instead? Set `formEndpoint` to your https://formspree.io/f/XXXXXXXX
+  // endpoint and leave `formAccessKey` blank — the form also sends Formspree's
+  // `_next` redirect + `_gotcha` honeypot, so no other change is needed.
+  formEndpoint: "https://api.web3forms.com/submit",
+  formAccessKey: "a63fdeff-11b7-40fb-aef0-8c4c70f84683",
 } as const;
 
 export type Site = typeof SITE;

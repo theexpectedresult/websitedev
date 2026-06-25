@@ -1,0 +1,117 @@
+---
+// src/pages/industries/index.astro
+// Index of the five industry pages, each mirroring its pamphlet.
+import Base from "../../layouts/Base.astro";
+import PageHero from "../../design/components/PageHero.astro";
+import CtaBar from "../../design/components/CtaBar.astro";
+import { industries } from "../../data/services";
+
+// Representative emoji per industry (display only).
+const ICON: Record<string, string> = {
+  restaurants: "🍔",
+  "retail-pet": "🛍️",
+  "small-business": "🏪",
+  clinics: "🩺",
+  schools: "🏫",
+};
+---
+
+<Base
+  title="Industries"
+  description="Tailored technology for restaurants, pet & retail stores, local small business, clinics & healthcare, and schools & campuses — security, video, access, networks and AV under one roof."
+>
+  <PageHero
+    eyebrow="Industries we serve"
+    title="Built for your kind of business"
+    subtitle="Each pamphlet, tailored to the floor you actually run."
+    company={false}
+  />
+
+  <section class="container grid-wrap">
+    <ul class="grid">
+      {
+        industries.map((o) => (
+          <li>
+            <a class="tile" href={`/industries/${o.slug}/`}>
+              <span class="ic" aria-hidden="true">{ICON[o.slug] ?? "🏢"}</span>
+              <span class="eyebrow">{o.audience}</span>
+              <span class="ttl">{o.subtitle}</span>
+              <span class="go">Explore →</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <CtaBar />
+</Base>
+
+<style>
+  .grid-wrap {
+    padding: 48px 0 64px;
+  }
+  .grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .tile {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    height: 100%;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px 22px;
+    background: #fff;
+    text-decoration: none;
+    color: var(--ink);
+    transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+  }
+  .tile:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(20, 32, 43, 0.12);
+    border-color: #c2cdda;
+    text-decoration: none;
+  }
+  .ic {
+    font-size: 34px;
+    line-height: 1;
+  }
+  .eyebrow {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #6a7785;
+    margin-top: 6px;
+  }
+  .ttl {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 1.12;
+  }
+  .go {
+    margin-top: auto;
+    padding-top: 14px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--net);
+  }
+  @media (max-width: 860px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 560px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

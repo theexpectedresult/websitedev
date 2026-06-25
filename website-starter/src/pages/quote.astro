@@ -1,0 +1,112 @@
+---
+// src/pages/quote.astro — Book a Walkthrough
+// QuoteForm + a confirmation state shown when the provider redirects back with ?sent=1.
+import Base from "../layouts/Base.astro";
+import PageHero from "../design/components/PageHero.astro";
+import QuoteForm from "../design/components/QuoteForm.astro";
+import { SITE } from "../data/site";
+---
+
+<Base
+  title="Book a Walkthrough"
+  description="Book a walkthrough with ER Tech Services — tell us about your space and we'll map the right security, video, access, network and AV systems."
+>
+  <PageHero
+    eyebrow="Book a Walkthrough"
+    title="Tell us about your space"
+    subtitle="A conversation first — no obligation, honest advice on what you actually need."
+    company={false}
+  />
+
+  <section class="container wrap">
+    <!-- Confirmation (revealed by script when ?sent=1) -->
+    <div id="confirm" class="confirm" hidden>
+      <div class="check" aria-hidden="true">✓</div>
+      <h2>Thanks — we've got it.</h2>
+      <p>
+        Your request is in. We'll reply from <b>{SITE.email}</b>, usually the same day.
+        Need us sooner? Call <a href={`tel:${SITE.phoneOffice.replace(/[^0-9+]/g, "")}`}
+          >{SITE.phoneOffice}</a
+        >.
+      </p>
+      <a class="btn" href="/">Back to home</a>
+    </div>
+
+    <div id="formblock" class="formblock">
+      <div class="intro">
+        <p>
+          Fill this in and we'll get back to you to set up a walkthrough. The more you tell
+          us about your space, the more useful our first call will be.
+        </p>
+      </div>
+      <QuoteForm />
+    </div>
+  </section>
+</Base>
+
+<script>
+  // Show the confirmation panel when the form endpoint redirects back with ?sent=1.
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("sent") === "1") {
+    document.getElementById("formblock")?.setAttribute("hidden", "");
+    const c = document.getElementById("confirm");
+    c?.removeAttribute("hidden");
+    c?.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+</script>
+
+<style>
+  .wrap {
+    max-width: 760px;
+    padding: 48px 0 64px;
+  }
+  .intro p {
+    font-size: 16px;
+    color: #44505f;
+    margin: 0 0 24px;
+    max-width: 60ch;
+  }
+
+  .confirm {
+    border: 1px solid #bfe6d8;
+    background: linear-gradient(160deg, #eef7f3, #e2f0ea);
+    border-radius: 16px;
+    padding: 36px 32px;
+    text-align: center;
+  }
+  .check {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 14px;
+    border-radius: 50%;
+    background: var(--acc);
+    color: #fff;
+    font-size: 30px;
+    line-height: 56px;
+    font-weight: 700;
+  }
+  .confirm h2 {
+    font-size: 28px;
+    margin: 0 0 8px;
+  }
+  .confirm p {
+    font-size: 16px;
+    color: #36424f;
+    max-width: 52ch;
+    margin: 0 auto 20px;
+  }
+  .btn {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: #08231f;
+    background: var(--brand);
+    border-radius: 10px;
+    padding: 12px 22px;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn:hover {
+    background: #57d6d0;
+    text-decoration: none;
+  }
+</style>

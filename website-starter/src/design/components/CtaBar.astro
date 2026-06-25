@@ -1,0 +1,99 @@
+---
+// src/design/components/CtaBar.astro
+// Repeating "book a walkthrough" call-to-action band.
+import { SITE } from "../../data/site";
+
+interface Props {
+  title?: string;
+  text?: string;
+  /** CTA button label + href (defaults to the Book a Walkthrough nav item). */
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+
+const {
+  title = "One trusted partner, front door to back office.",
+  text = "Book a walkthrough and we'll map the right systems for your space — honest advice, one clean install.",
+  ctaLabel = "Book a Walkthrough",
+  ctaHref = "/quote/",
+} = Astro.props;
+---
+
+<section class="ctabar">
+  <div class="container inner">
+    <div class="msg">
+      <h2>{title}</h2>
+      <p>{text}</p>
+    </div>
+    <div class="actions">
+      <a class="btn primary" href={ctaHref}>{ctaLabel}</a>
+      <a class="btn ghost" href={`tel:${SITE.phoneOffice.replace(/[^0-9+]/g, "")}`}>
+        Call {SITE.phoneOffice}
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ctabar {
+    background: var(--grad-header-left);
+    color: #eafdfb;
+  }
+  .inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    padding: 36px 0;
+    flex-wrap: wrap;
+  }
+  .msg h2 {
+    color: #fff;
+    font-size: 26px;
+    margin: 0 0 6px;
+  }
+  .msg p {
+    color: #c7ebe6;
+    font-size: 16px;
+    max-width: 56ch;
+    margin: 0;
+  }
+  .actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 16px;
+    padding: 13px 22px;
+    border-radius: 10px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .btn.primary {
+    color: #08231f;
+    background: var(--brand);
+    box-shadow: 0 2px 12px rgba(57, 198, 192, 0.35);
+  }
+  .btn.primary:hover {
+    background: #57d6d0;
+    text-decoration: none;
+  }
+  .btn.ghost {
+    color: #eafdfb;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+  }
+  .btn.ghost:hover {
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+    text-decoration: none;
+  }
+  @media (max-width: 760px) {
+    .inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

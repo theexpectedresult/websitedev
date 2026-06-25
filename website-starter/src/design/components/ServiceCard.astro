@@ -1,0 +1,98 @@
+---
+// src/design/components/ServiceCard.astro
+// One service pillar card. Matches the pamphlet one-pagers exactly
+// (see public/downloads/overview-general.html .card / .cap / li rules).
+// The coloured cap gradient + bullet dot come from data-accent via tokens.css.
+import { ICONS } from "../../data/services";
+import type { Accent, IconKey } from "../../data/services";
+
+interface Props {
+  accent: Accent; // sec | vid | acc | net | rec | av
+  icon: IconKey;
+  title: string;
+  items: string[];
+}
+
+const { accent, icon, title, items } = Astro.props;
+const glyph = ICONS[icon];
+---
+
+<article class="card" data-accent={accent}>
+  <div class="cap">
+    <span class="ic" aria-hidden="true">{glyph}</span>
+    <h3 class="cap-title">{title}</h3>
+  </div>
+  <ul>
+    {items.map((item) => <li>{item}</li>)}
+  </ul>
+</article>
+
+<style>
+  /* Geometry + type lifted verbatim from the pamphlet one-pagers. */
+  .card {
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cap {
+    background: var(--cap); /* accent gradient from tokens.css */
+    color: #fff;
+    padding: 12px 14px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 1.05;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 58px;
+  }
+
+  .cap .ic {
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  /* Keep the heading visually identical to the pamphlet's plain cap text */
+  .cap-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 1.05;
+    letter-spacing: 0.2px;
+    margin: 0;
+  }
+
+  ul {
+    list-style: none;
+    padding: 14px 16px 16px;
+    margin: 0;
+  }
+
+  li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 9px;
+    font-size: 14px;
+    line-height: 1.32;
+  }
+
+  li:last-child {
+    margin-bottom: 0;
+  }
+
+  li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent); /* accent dot from tokens.css */
+  }
+</style>

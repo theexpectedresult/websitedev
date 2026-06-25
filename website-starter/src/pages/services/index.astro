@@ -1,0 +1,25 @@
+---
+// src/pages/services/index.astro
+// The six pillars expanded (from offerings.general) + the #sma section.
+import Base from "../../layouts/Base.astro";
+import PageHero from "../../design/components/PageHero.astro";
+import OfferingBody from "../../design/components/OfferingBody.astro";
+import CtaBar from "../../design/components/CtaBar.astro";
+import { offerings } from "../../data/services";
+
+const general = offerings.general;
+---
+
+<Base
+  title="Services"
+  description="Six pillars under one roof: Security & Alarm, Video Surveillance, Access Control, Network Infrastructure, Front Desk & Workspace, and AV, Audio & Conference — plus Service & Maintenance Agreements."
+>
+  <PageHero
+    eyebrow={general.audience}
+    title={general.title}
+    subtitle={general.subtitle}
+  />
+  <OfferingBody offering={general} />
+  <div style="height:48px"></div>
+  <CtaBar />
+</Base>

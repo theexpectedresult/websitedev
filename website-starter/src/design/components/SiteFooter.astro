@@ -1,0 +1,188 @@
+---
+// src/design/components/SiteFooter.astro
+// Footer: legal entity at the forefront, Langley BC, contact, licensing,
+// and the cross-link to the residential WordPress site. All from site.ts.
+import { SITE } from "../../data/site";
+import BrandMark from "./BrandMark.astro";
+
+const accent = SITE.brandAccentWord;
+const [before, after] = SITE.brand.split(accent);
+const year = 2026; // static build; bump or wire to build date when desired
+---
+
+<footer class="footer">
+  <div class="container grid">
+    <!-- Brand + legal entity at the forefront -->
+    <div class="col brandcol">
+      <div class="brandlock">
+        <BrandMark size={40} />
+        <div class="wordmark">{before}<span class="accent">{accent}</span>{after}</div>
+      </div>
+      <p class="legal">{SITE.legalEntity}</p>
+      <p class="tagline">{SITE.tagline}</p>
+      <ul class="licenses">
+        {SITE.licenses.map((l) => <li>{l}</li>)}
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div class="col">
+      <h2 class="ftitle">Contact</h2>
+      <ul class="lines">
+        <li>{SITE.city}</li>
+        <li>
+          Mobile:{" "}
+          <a href={`tel:${SITE.phoneMobile.replace(/[^0-9+]/g, "")}`}>{SITE.phoneMobile}</a>
+        </li>
+        <li>
+          Office:{" "}
+          <a href={`tel:${SITE.phoneOffice.replace(/[^0-9+]/g, "")}`}>{SITE.phoneOffice}</a>
+        </li>
+        <li><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
+        <li><a href={SITE.linkedin} rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+
+    <!-- Service area -->
+    <div class="col">
+      <h2 class="ftitle">Service area</h2>
+      <p class="area">{SITE.serviceAreaLine}</p>
+    </div>
+
+    <!-- Residential cross-link -->
+    <div class="col">
+      <h2 class="ftitle">Looking for home?</h2>
+      <p class="area">{SITE.residential.blurb}</p>
+      <a class="resi" href={SITE.residential.url} rel="noopener">
+        {SITE.residential.label} &rarr;
+      </a>
+    </div>
+  </div>
+
+  <div class="container bottom">
+    <p>
+      &copy; {year} {SITE.legalEntity}. ER Tech Services and The Expected Result are one
+      company. Langley, BC.
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--grad-footer);
+    color: #dfe7ef;
+    margin-top: auto;
+    padding: 48px 0 24px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1.1fr;
+    gap: 32px;
+  }
+
+  .ftitle {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0 0 12px;
+  }
+
+  /* brand column */
+  .brandlock {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 26px;
+    color: #fff;
+    line-height: 1;
+  }
+  .wordmark .accent {
+    color: var(--brand);
+  }
+  .legal {
+    font-weight: 600;
+    font-size: 14px;
+    color: #eef3f8;
+    margin: 10px 0 2px;
+  }
+  .tagline {
+    font-size: 13px;
+    color: #b8c6d4;
+    margin-bottom: 12px;
+  }
+  .licenses {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .licenses li {
+    font-size: 12px;
+    color: #9fb1c2;
+    line-height: 1.5;
+  }
+
+  /* contact + lists */
+  .lines,
+  .area {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #c4d0db;
+  }
+  .lines {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .footer a {
+    color: #c4d0db;
+    text-decoration: none;
+  }
+  .footer a:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+
+  .resi {
+    display: inline-block;
+    margin-top: 12px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--brand) !important;
+  }
+  .resi:hover {
+    color: #57d6d0 !important;
+  }
+
+  .bottom {
+    margin-top: 36px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .bottom p {
+    font-size: 12.5px;
+    color: #93a4b5;
+    margin: 0;
+  }
+
+  @media (max-width: 860px) {
+    .grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+  }
+  @media (max-width: 520px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

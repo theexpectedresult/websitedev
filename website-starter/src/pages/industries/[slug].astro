@@ -1,0 +1,49 @@
+---
+// src/pages/industries/[slug].astro
+// One page per industry, generated from the offerings marked isIndustry.
+// Mirrors its pamphlet: hero, intro, six tailored cards, support panel, SMA,
+// the "view / print one-pager" button, and a CTA.
+import Base from "../../layouts/Base.astro";
+import PageHero from "../../design/components/PageHero.astro";
+import OfferingBody from "../../design/components/OfferingBody.astro";
+import CtaBar from "../../design/components/CtaBar.astro";
+import { industries } from "../../data/services";
+import type { Offering } from "../../data/services";
+
+export function getStaticPaths() {
+  return industries.map((o) => ({
+    params: { slug: o.slug },
+    props: { offering: o },
+  }));
+}
+
+interface Props {
+  offering: Offering;
+}
+const { offering } = Astro.props;
+
+const ICON: Record<string, string> = {
+  restaurants: "🍔",
+  "retail-pet": "🛍️",
+  "small-business": "🏪",
+  clinics: "🩺",
+  schools: "🏫",
+};
+const introIcon = ICON[offering.slug] ?? "🏢";
+---
+
+<Base
+  title={offering.audience.replace(/^For\s+/i, "")}
+  description={offering.intro}
+>
+  <PageHero
+    eyebrow={offering.audience}
+    title={offering.title}
+    subtitle={offering.subtitle}
+  />
+  <OfferingBody offering={offering} introIcon={introIcon} />
+  <div style="height:48px"></div>
+  <CtaBar
+    title={`Let's tailor this to your ${offering.subtitle.toLowerCase().includes("shop") ? "shop" : "site"}.`}
+  />
+</Base>

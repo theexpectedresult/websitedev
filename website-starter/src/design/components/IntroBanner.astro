@@ -1,0 +1,44 @@
+---
+// src/design/components/IntroBanner.astro
+// Amber→purple→indigo gradient intro band (pamphlet .intro). Icon + copy.
+interface Props {
+  /** Emoji or short glyph shown at left. */
+  icon?: string;
+  /** Intro copy. Falls back to the default slot if omitted. */
+  text?: string;
+}
+const { icon = "\u{1F3E0}", text } = Astro.props;
+---
+
+<div class="intro">
+  {icon && <div class="gem" aria-hidden="true">{icon}</div>}
+  <div class="copy">{text ? text : <slot />}</div>
+</div>
+
+<style>
+  .intro {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 22px;
+    border-radius: 12px;
+    background: var(--grad-intro);
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.45;
+  }
+  .gem {
+    font-size: 34px;
+    line-height: 1;
+    flex: none;
+  }
+  .copy {
+    font-weight: 500;
+  }
+  @media (max-width: 520px) {
+    .intro {
+      font-size: 15px;
+      padding: 16px 18px;
+    }
+  }
+</style>

@@ -1,0 +1,97 @@
+---
+// src/design/components/SupportPanels.astro
+// The pamphlet "Additional Support" block: a green site/infra panel + a blue
+// ongoing-service panel that carries the SMA tier strip. Content from services.ts.
+import { ongoingSupport } from "../../data/services";
+import type { SupportPanel } from "../../data/services";
+import SmaTiers from "./SmaTiers.astro";
+
+interface Props {
+  support: SupportPanel;
+}
+const { support } = Astro.props;
+---
+
+<div class="support">
+  <div class="panel green">
+    <h3><span aria-hidden="true">🔧</span> {support.title}</h3>
+    <ul>
+      {support.items.map((i) => <li>{i}</li>)}
+    </ul>
+  </div>
+
+  <div class="panel blue">
+    <h3><span aria-hidden="true">⚙️</span> Ongoing Service & Support</h3>
+    <ul>
+      {ongoingSupport.map((i) => <li>{i}</li>)}
+    </ul>
+    <div class="sma-wrap">
+      <SmaTiers />
+    </div>
+  </div>
+</div>
+
+<style>
+  .support {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+  .panel {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 22px 24px;
+  }
+  .panel.green {
+    background: linear-gradient(160deg, #eef7f3, #e2f0ea);
+  }
+  .panel.blue {
+    background: linear-gradient(160deg, #eaf3fb, #dceaf6);
+  }
+  .panel h3 {
+    font-family: var(--font-display);
+    font-size: 21px;
+    font-weight: 700;
+    margin: 0 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .panel ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .panel li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 9px;
+    font-size: 14.5px;
+    line-height: 1.35;
+  }
+  .panel.green li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--acc);
+    font-weight: 700;
+  }
+  .panel.blue li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #1f6d9a;
+    font-weight: 700;
+  }
+  .sma-wrap {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(31, 109, 154, 0.2);
+  }
+  @media (max-width: 760px) {
+    .support {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

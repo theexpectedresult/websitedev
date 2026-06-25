@@ -1,0 +1,291 @@
+---
+// src/pages/about.astro
+// Company, value props, service area, ecosystems/partners, licensing, legal entity.
+import Base from "../layouts/Base.astro";
+import PageHero from "../design/components/PageHero.astro";
+import CtaBar from "../design/components/CtaBar.astro";
+import { SITE } from "../data/site";
+
+const values = [
+  {
+    icon: "🏠",
+    title: "Under one roof",
+    body: "Security, video, access, networks and AV from one partner — no juggling vendors, no finger-pointing when systems need to talk to each other.",
+  },
+  {
+    icon: "🤝",
+    title: "Honest tradeoffs, not hype",
+    body: "We size systems to your space and budget, tell you what you don't need, and leave you with gear you can actually run.",
+  },
+  {
+    icon: "🧰",
+    title: "Tradesperson-credible",
+    body: "Clean racks, tidy cabling, infrastructure ready for growth. Work you'd be glad to show another tech.",
+  },
+  {
+    icon: "📍",
+    title: "Local and on-hand",
+    body: "Based in Langley, BC and working across the Lower Mainland, the Island and beyond — with Service & Maintenance Agreements that keep you covered.",
+  },
+];
+---
+
+<Base
+  title="About"
+  description={`${SITE.legalEntity} — commercial security, video, access, network and AV under one roof, serving British Columbia from Langley.`}
+>
+  <PageHero
+    eyebrow="About us"
+    title="One company, one expected result"
+    subtitle="ER Tech Services is the commercial face of Expected Result Technical Services Corporation."
+  />
+
+  <section class="container section">
+    <div class="lede-grid">
+      <div>
+        <h2>Who we are</h2>
+        <p>
+          <b>ER Tech Services</b> ("ER" is literally <b>Expected Result</b>) is the
+          commercial and institutional side of
+          <b>{SITE.legalEntity}</b>. Our residential work runs under
+          <a href={SITE.residential.url} rel="noopener">The Expected Result</a> — same
+          company, same standard, two front doors.
+        </p>
+        <p>
+          We design, install and support the technology that keeps a business secure,
+          connected and running — from the front entrance to the back office. One partner,
+          honest advice, and a clean install you can grow into.
+        </p>
+      </div>
+      <aside class="card-aside">
+        <h3>At a glance</h3>
+        <ul>
+          <li><span>Based in</span><b>{SITE.city}</b></li>
+          <li><span>Office</span><b>{SITE.phoneOffice}</b></li>
+          <li><span>Mobile</span><b>{SITE.phoneMobile}</b></li>
+          <li><span>Entity</span><b>{SITE.legalEntity}</b></li>
+        </ul>
+        <div class="lic">
+          {SITE.licenses.map((l) => <span>{l}</span>)}
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="container section">
+    <h2 class="center">Why work with us</h2>
+    <div class="rule"></div>
+    <div class="values">
+      {
+        values.map((v) => (
+          <div class="value">
+            <div class="vic" aria-hidden="true">{v.icon}</div>
+            <h3>{v.title}</h3>
+            <p>{v.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="container band-grid">
+      <div>
+        <h2>Service area</h2>
+        <p class="area-line">{SITE.serviceAreaLine}</p>
+        <ul class="chips">
+          {SITE.serviceArea.map((a) => <li>{a}</li>)}
+        </ul>
+      </div>
+      <div>
+        <h2>Ecosystems & partners</h2>
+        <p class="band-lede">
+          We design, install and support pro-grade platforms across security, automation,
+          networking and AV.
+        </p>
+        <ul class="chips alt">
+          {SITE.ecosystems.map((e) => <li>{e}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="container legal-note">
+    <p>
+      Licensed in British Columbia — {SITE.licenses.join(" · ")}. Operating as
+      <b>{SITE.legalEntity}</b>. ER Tech Services (commercial) and The Expected Result
+      (residential) are one company.
+    </p>
+  </section>
+
+  <CtaBar />
+</Base>
+
+<style>
+  .center {
+    text-align: center;
+  }
+  .lede-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  .lede-grid h2 {
+    font-size: 30px;
+    margin: 0 0 12px;
+  }
+  .lede-grid p {
+    font-size: 17px;
+    line-height: 1.6;
+    color: #36424f;
+    margin: 0 0 14px;
+    max-width: 60ch;
+  }
+  .card-aside {
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 22px 24px;
+    background: #f7fafc;
+  }
+  .card-aside h3 {
+    font-size: 18px;
+    margin: 0 0 12px;
+  }
+  .card-aside ul {
+    list-style: none;
+    margin: 0 0 14px;
+    padding: 0;
+  }
+  .card-aside li {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+  }
+  .card-aside li span {
+    color: #6a7785;
+  }
+  .card-aside li b {
+    text-align: right;
+  }
+  .card-aside .lic span {
+    display: block;
+    font-size: 12px;
+    color: #6a7785;
+    line-height: 1.5;
+  }
+
+  .values {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-top: 22px;
+  }
+  .value {
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 22px 20px;
+    background: #fff;
+  }
+  .vic {
+    font-size: 30px;
+    margin-bottom: 8px;
+  }
+  .value h3 {
+    font-size: 18px;
+    margin: 0 0 6px;
+  }
+  .value p {
+    font-size: 14.5px;
+    line-height: 1.45;
+    color: #44505f;
+    margin: 0;
+  }
+
+  /* band (shared look with home) */
+  .band {
+    background: #f4f7fa;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .band-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 52px 0;
+  }
+  .band h2 {
+    font-size: 24px;
+    margin: 0 0 8px;
+  }
+  .band-lede {
+    color: #44505f;
+    font-size: 15px;
+    margin: 0 0 14px;
+    max-width: 52ch;
+  }
+  /* Prominent rhyming service-area line (brand-deep teal, semibold) above the chips */
+  .area-line {
+    color: #1f6d6a;
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 1.4;
+    margin: 0 0 16px;
+    max-width: 56ch;
+  }
+  .chips {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .chips li {
+    border: 1px solid var(--line);
+    background: #fff;
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #15323f;
+  }
+  .chips.alt li {
+    border-color: #c9d3e6;
+    color: var(--net);
+  }
+
+  .legal-note {
+    padding: 40px 0 8px;
+  }
+  .legal-note p {
+    font-size: 14px;
+    color: #5a6675;
+    max-width: 80ch;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  @media (max-width: 900px) {
+    .lede-grid {
+      grid-template-columns: 1fr;
+    }
+    .values {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 760px) {
+    .band-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+  @media (max-width: 480px) {
+    .values {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
