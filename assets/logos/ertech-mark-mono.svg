@@ -2,8 +2,8 @@
   <defs>
     <mask id="er-ko">
       <rect x="0" y="0" width="880" height="500" fill="white"></rect>
-      <path transform="translate(240 250) scale(0.13059 -0.13059) translate(-711.50 -704.50)" d="M137 0V1409H1245V1181H432V827H1184V599H432V228H1286V0Z" fill="black"></path>
-      <path transform="translate(640 250) scale(0.13059 -0.13059) translate(-787.00 -704.50)" d="M1105 0 778 535H432V0H137V1409H841Q1093 1409 1230.0 1300.5Q1367 1192 1367 989Q1367 841 1283.0 733.5Q1199 626 1056 592L1437 0ZM1070 977Q1070 1180 810 1180H432V764H818Q942 764 1006.0 820.0Q1070 876 1070 977Z" fill="black"></path>
+      <path transform="translate(240 250) scale(0.12 -0.12) translate(-711.50 -704.50)" d="M137 0V1409H1245V1181H432V827H1184V599H432V228H1286V0Z" fill="black"></path>
+      <path transform="translate(640 250) scale(0.12 -0.12) translate(-787.00 -704.50)" d="M1105 0 778 535H432V0H137V1409H841Q1093 1409 1230.0 1300.5Q1367 1192 1367 989Q1367 841 1283.0 733.5Q1199 626 1056 592L1437 0ZM1070 977Q1070 1180 810 1180H432V764H818Q942 764 1006.0 820.0Q1070 876 1070 977Z" fill="black"></path>
     </mask>
     <mask id="er-outside">
       <rect x="0" y="0" width="880" height="500" fill="white"></rect>
