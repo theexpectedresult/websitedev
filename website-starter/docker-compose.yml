@@ -1,0 +1,11 @@
+services:
+  ertech-web:
+    build: .
+    container_name: ertech-web
+    restart: unless-stopped
+    networks:
+      - caddy-proxy
+
+networks:
+  caddy-proxy:
+    external: true
