@@ -1,0 +1,7 @@
+/* ER Tech Services Design System — global entry point.
+   Consumers link THIS file. Keep it as @import lines only. */
+
+@import "tokens/fonts.css";
+@import "tokens/typography.css";  /* shared scale, weights, tracking */
+@import "tokens/spacing.css";     /* spacing, radii, shadows, motion */
+@import "tokens/brand.css";       /* CANONICAL pamphlet system — the single palette */

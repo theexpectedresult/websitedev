@@ -1,0 +1,23 @@
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# --- Node / build (for the Astro site under website-starter/) ---
+node_modules/
+dist/
+.astro/
+.cache/
+*.log
+npm-debug.log*
+.env
+.env.*
+!.env.example
+
+# --- Misc ---
+.thumbnail
+
+# --- Raw source kit (reflected in assets/, tokens/ and website-starter/) ---
+uploads/
