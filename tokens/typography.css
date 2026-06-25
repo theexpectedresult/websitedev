@@ -1,0 +1,41 @@
+/* ER Tech Services — TYPOGRAPHY SCALE & SEMANTIC TEXT TOKENS
+   Font families are defined canonically in brand.css (Barlow / Barlow Semi
+   Condensed). This file owns the shared scale, weights, line-heights, tracking
+   and semantic text aliases. Type scale = 1.250 major third. */
+
+:root {
+  --font-mono: "JetBrains Mono", "Cascadia Code", Consolas, monospace;
+
+  --fw-regular: 400; /* @kind font */
+  --fw-medium: 500; /* @kind font */
+  --fw-semibold: 600; /* @kind font */
+  --fw-bold: 700; /* @kind font */
+
+  /* Type scale (1.250) */
+  --fs-xs:   0.75rem;    /* 12 */
+  --fs-sm:   0.875rem;   /* 14 */
+  --fs-base: 1rem;       /* 16 */
+  --fs-lg:   1.125rem;   /* 18 */
+  --fs-xl:   1.25rem;    /* 20 */
+  --fs-2xl:  1.563rem;   /* 25 */
+  --fs-3xl:  1.953rem;   /* 31 */
+  --fs-4xl:  2.441rem;   /* 39 */
+  --fs-5xl:  3.052rem;   /* 49 */
+
+  --lh-tight: 1.15; /* @kind font */
+  --lh-snug:  1.3; /* @kind font */
+  --lh-base:  1.55; /* @kind font */
+  --lh-loose: 1.7; /* @kind font */
+
+  --tracking-tight: -0.02em; /* @kind font */
+  --tracking-normal: 0; /* @kind font */
+  --tracking-wide: 0.04em; /* @kind font */
+  --tracking-caps: 0.08em; /* @kind font */
+
+  /* Semantic text aliases */
+  --text-eyebrow: var(--fw-semibold) var(--fs-xs)/1 var(--font-sans); /* @kind font */
+  --text-h1: var(--fw-bold) var(--fs-5xl)/var(--lh-tight) var(--font-display); /* @kind font */
+  --text-h2: var(--fw-bold) var(--fs-3xl)/var(--lh-snug) var(--font-display); /* @kind font */
+  --text-h3: var(--fw-semibold) var(--fs-xl)/var(--lh-snug) var(--font-display); /* @kind font */
+  --text-body-font: var(--fw-regular) var(--fs-base)/var(--lh-base) var(--font-sans); /* @kind font */
+}

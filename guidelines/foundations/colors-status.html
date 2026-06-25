@@ -1,0 +1,27 @@
+<!-- @dsCard group="Colors" viewport="700x170" name="Status Surfaces" subtitle="Tracker palette — complete, in progress, needs parts, blocked" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  body { margin: 0; font-family: var(--font-body); background: var(--paper); }
+  .grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-3); padding: var(--space-5); }
+  .cell { border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; }
+  .surf { height: 54px; display: flex; align-items: center; justify-content: center; }
+  .chip { display: inline-flex; padding: 2px 10px; border-radius: var(--radius-pill); font-size: var(--fs-xs); font-weight: var(--fw-semibold); }
+  .meta { padding: var(--space-2) var(--space-3); }
+  .name { font-size: var(--fs-xs); font-weight: var(--fw-semibold); color: var(--text-strong); }
+  .hex { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); }
+</style>
+</head>
+<body>
+  <div class="grid">
+    <div class="cell"><div class="surf" style="background:var(--success-surface)"><span class="chip" style="color:var(--success);background:var(--white)">Complete</span></div><div class="meta"><div class="name">Success</div><div class="hex">#C6EFCE</div></div></div>
+    <div class="cell"><div class="surf" style="background:var(--warning-surface)"><span class="chip" style="color:var(--warning);background:var(--white)">In progress</span></div><div class="meta"><div class="name">Warning</div><div class="hex">#FFF2CC</div></div></div>
+    <div class="cell"><div class="surf" style="background:var(--attention-surface)"><span class="chip" style="color:var(--attention);background:var(--white)">Needs parts</span></div><div class="meta"><div class="name">Attention</div><div class="hex">#FCE4D6</div></div></div>
+    <div class="cell"><div class="surf" style="background:var(--danger-surface)"><span class="chip" style="color:var(--danger);background:var(--white)">Blocked</span></div><div class="meta"><div class="name">Danger</div><div class="hex">#FEE2E2</div></div></div>
+    <div class="cell"><div class="surf" style="background:var(--info-surface)"><span class="chip" style="color:var(--brand-deep);background:var(--white)">Info</span></div><div class="meta"><div class="name">Info</div><div class="hex">#E7F6F5</div></div></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Slide Deck" description="16:9 slides — title, section divider, content pillars, closing" -->
+<helmet>
+  <script src="./ds-base.js"></script>
+  <style>
+    body { margin: 0; background: #0e1822; }
+  </style>
+</helmet>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 24px; padding: 24px; font-family: var(--font-body);">
+
+  <div style="width: 1280px; height: 720px; background: var(--grad-header-left); color: #fff; box-sizing: border-box; padding: 96px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden;">
+    <img src="./ertech-mark-mono.svg" alt="" style="position: absolute; right: 80px; top: 80px; height: 60px; filter: brightness(0) invert(1); opacity: 0.9;" />
+    <div style="font-family: var(--font-body); font-weight: 700; font-size: 18px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand);">Expected Result Technical Services Corporation</div>
+    <h1 style="font-family: var(--font-display); font-weight: 700; font-size: 76px; line-height: 1.03; margin: 20px 0 0; max-width: 920px;">Front door to back office — under one roof.</h1>
+    <p style="font-size: 24px; color: rgba(255,255,255,0.85); margin: 24px 0 0; max-width: 780px;">Commercial security, video, access, network, front-desk &amp; AV — one accountable team across Greater Vancouver.</p>
+    <div style="position: absolute; left: 96px; bottom: 60px; font-size: 15px; color: rgba(255,255,255,0.55); font-family: var(--font-mono);">01</div>
+  </div>
+
+  <div style="width: 1280px; height: 720px; background: var(--paper); color: var(--ink); box-sizing: border-box; padding: 96px; display: flex; flex-direction: column; justify-content: center; position: relative;">
+    <div style="height: 6px; width: 160px; border-radius: 999px; background: var(--grad-rule);"></div>
+    <div style="font-family: var(--font-body); font-weight: 700; font-size: 20px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brand-deep); margin-top: 28px;">Section 01</div>
+    <h2 style="font-family: var(--font-display); font-weight: 700; font-size: 64px; line-height: 1.05; margin: 12px 0 0; max-width: 920px;">What we secure, connect &amp; support</h2>
+    <img src="./ertech-logo-tech-services.svg" alt="" style="position: absolute; right: 96px; bottom: 60px; height: 38px;" />
+    <div style="position: absolute; left: 96px; bottom: 60px; font-size: 15px; color: var(--text-muted); font-family: var(--font-mono);">02</div>
+  </div>
+
+  <div style="width: 1280px; height: 720px; background: var(--paper); color: var(--ink); box-sizing: border-box; padding: 72px 96px; display: flex; flex-direction: column; position: relative;">
+    <h2 style="font-family: var(--font-display); font-weight: 700; font-size: 44px; margin: 0 0 8px;">Six disciplines, one team</h2>
+    <div style="height: 4px; width: 100%; border-radius: 999px; background: var(--grad-rule); margin-bottom: 28px;"></div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+      <sc-for list="{{ pillars3 }}" as="p" hint-placeholder-count="3">
+        <x-import component-from-global-scope="ERTechServicesDesignSystem_dceeff.ServiceCard" accent="{{ p.accent }}" title="{{ p.title }}" items="{{ p.items }}" hint-size="100%,320px"></x-import>
+      </sc-for>
+    </div>
+    <div style="position: absolute; left: 96px; bottom: 52px; font-size: 15px; color: var(--text-muted); font-family: var(--font-mono);">03</div>
+  </div>
+
+  <div style="width: 1280px; height: 720px; background: var(--grad-footer); color: #fff; box-sizing: border-box; padding: 96px; display: flex; flex-direction: column; justify-content: center; position: relative;">
+    <img src="./ertech-mark-mono.svg" alt="" style="height: 70px; filter: brightness(0) invert(1); margin-bottom: 28px;" />
+    <h2 style="font-family: var(--font-display); font-weight: 700; font-size: 60px; line-height: 1.05; margin: 0;">Let's scope your site.</h2>
+    <div style="font-size: 22px; color: rgba(255,255,255,0.85); margin-top: 20px; line-height: 1.6;">Office 778-808-8769 · Mobile 778-246-2492<br/>results@ertechservices.ca · ertechservices.ca</div>
+    <div style="font-family: var(--font-mono); font-size: 14px; color: rgba(255,255,255,0.6); margin-top: 22px;">Security Consultant Lic. #B7128 · TSBC LIC-00214786</div>
+    <div style="position: absolute; left: 96px; bottom: 60px; font-size: 15px; color: rgba(255,255,255,0.5); font-family: var(--font-mono);">04</div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1280, &quot;height&quot;: 720}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      pillars3: [
+        { accent: "sec", title: "Security & Alarm", items: ["Intrusion alarm system", "Door & window sensors", "24/7 monitored service", "Duress button at point of sale", "After-hours protection"] },
+        { accent: "vid", title: "Video Surveillance", items: ["Entrance & sales-floor cameras", "Parking & exterior coverage", "POS-linked transaction video", "Remote mobile viewing", "Secure cloud / local storage"] },
+        { accent: "acc", title: "Access Control", items: ["Keypad, fob & keyless entry", "Access levels per area", "Staff vs. public control", "Audit trail & access logs", "After-hours lockdown"] },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

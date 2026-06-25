@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ER Tech Services — Tri-Fold Brochure</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap');
+  *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;}
+  :root{
+    --ink:#1a2230; --line:#d8dde6; --paper:#fff; --brand:#39c6c0; --grey:#5a6675;
+    --sec:#214a5f; --vid:#b07514; --acc:#1f8a6d; --net:#3b3f8f; --rec:#1f8aa0; --av:#6a2a6e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Barlow',sans-serif;color:var(--ink);background:#0c1118;padding:22px;display:flex;flex-direction:column;align-items:center;gap:22px;}
+  .label{color:#9fb0c0;font-family:'Barlow Semi Condensed';font-weight:600;font-size:13px;letter-spacing:1px;align-self:flex-start;margin-left:6px;}
+  h1,h2,h3,.disp{font-family:'Barlow Semi Condensed',sans-serif;letter-spacing:.2px;}
+
+  .sheet{width:1056px;height:816px;background:var(--paper);display:flex;box-shadow:0 18px 50px rgba(0,0,0,.5);overflow:hidden;}
+  .panel{flex:1;padding:20px 18px;position:relative;display:flex;flex-direction:column;}
+  .panel.fold{border-right:1px dashed #c9d2dc;}
+  .panel.dark{background:linear-gradient(150deg,#0f2c33,#1f6d6a 70%,#1f6d6a);color:#eafdfb;}
+
+  /* mini service card */
+  .mcard{border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-bottom:9px;}
+  .mcard .cap{color:#fff;font-family:'Barlow Semi Condensed';font-weight:700;font-size:13px;padding:6px 9px;display:flex;align-items:center;gap:6px;line-height:1.05;}
+  .mcard .cap .i{font-size:14px;}
+  .mcard ul{list-style:none;padding:7px 10px 8px;}
+  .mcard li{font-size:9.7px;line-height:1.3;padding-left:11px;position:relative;margin-bottom:3px;}
+  .mcard li::before{content:"";position:absolute;left:0;top:5px;width:4px;height:4px;border-radius:50%;}
+  .c-sec .cap{background:linear-gradient(120deg,#15323f,#2f5f70);} .c-sec li::before{background:var(--sec);}
+  .c-vid .cap{background:linear-gradient(120deg,#9a5f10,#caa233);} .c-vid li::before{background:var(--vid);}
+  .c-acc .cap{background:linear-gradient(120deg,#157a55,#37a98a);} .c-acc li::before{background:var(--acc);}
+  .c-net .cap{background:linear-gradient(120deg,#2c2f73,#5258b0);} .c-net li::before{background:var(--net);}
+  .c-rec .cap{background:linear-gradient(120deg,#176a7e,#2ca7bd);} .c-rec li::before{background:var(--rec);}
+  .c-av  .cap{background:linear-gradient(120deg,#4b1d54,#8a3a90);} .c-av  li::before{background:var(--av);}
+
+  .ptitle{font-size:17px;font-weight:700;color:#15323f;margin-bottom:3px;}
+  .prule{height:3px;border-radius:3px;background:linear-gradient(90deg,#1f8a6d,#3b3f8f 50%,#6a2a6e);margin-bottom:10px;}
+
+  /* generic bullet list */
+  .blist{list-style:none;} .blist li{font-size:10px;line-height:1.32;padding-left:12px;position:relative;margin-bottom:5px;}
+  .blist li::before{content:"";position:absolute;left:0;top:5px;width:4px;height:4px;border-radius:50%;background:var(--acc);}
+  .blist li b{color:#15323f;}
+
+  /* ---- front cover ---- */
+  .cover-eyebrow{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#8fd8d0;font-weight:600;}
+  .cover-brand{font-family:'Barlow Semi Condensed';font-weight:700;font-size:46px;line-height:1;color:#fff;margin-top:8px;}
+  .cover-brand b{color:var(--brand);}
+  .cover-tag{font-family:'Barlow Semi Condensed';font-weight:700;font-size:23px;color:#dafff5;line-height:1.12;margin-top:14px;}
+  .cover-sub{font-size:12px;color:#bfeae5;margin-top:10px;letter-spacing:.5px;}
+  .cover-foot{margin-top:auto;font-size:10px;color:#bfeae5;line-height:1.5;}
+
+  /* ---- flap (hook) ---- */
+  .hookhead{border-radius:9px;background:linear-gradient(120deg,#c2731a,#7a3f7e 55%,#2f3f86);color:#fff;padding:10px 12px;}
+  .hookhead .k{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#ffe6c2;font-weight:600;}
+  .hookhead .t{font-family:'Barlow Semi Condensed';font-weight:700;font-size:18px;line-height:1.08;margin-top:2px;}
+  .tiers{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:9px;}
+  .tier{border:1px solid #bcd2e2;border-radius:7px;overflow:hidden;text-align:center;}
+  .tier .b{height:4px;} .tier .nm{font-family:'Barlow Semi Condensed';font-weight:700;font-size:10.5px;text-transform:uppercase;padding-top:5px;}
+  .tier .rt{font-size:9px;color:#1f6d9a;font-weight:600;padding:1px 2px 6px;line-height:1.15;}
+  .b-std{background:#8aa6bb;} .b-pri{background:#2f8fc0;} .b-prem{background:#caa233;}
+  .tier.prem{border-color:#caa233;}
+
+  /* ---- back panel ---- */
+  .back-brand{font-family:'Barlow Semi Condensed';font-weight:700;font-size:26px;color:#15323f;}
+  .back-brand b{color:#1f8aa0;}
+  .ctabox{margin-top:auto;background:linear-gradient(150deg,#14202b,#1d2c3a);color:#dfe7ef;border-radius:10px;padding:13px 14px;}
+  .ctabox .h{font-family:'Barlow Semi Condensed';font-weight:700;font-size:16px;color:#fff;}
+  .ctabox .row{font-size:11px;margin-top:6px;line-height:1.5;}
+  .ctabox .row b{color:#9fe6e1;}
+  .lic{font-size:9px;color:var(--grey);margin-top:9px;line-height:1.4;}
+
+  .small{font-size:9.5px;color:var(--grey);line-height:1.35;}
+
+  /* managed/remote feature box */
+  .feat{margin-top:10px;border:1px solid #c5d2dc;border-left:4px solid var(--acc);border-radius:8px;background:linear-gradient(160deg,#eef4f8,#e3edf4);padding:9px 11px;}
+  .feat .ft{font-family:'Barlow Semi Condensed';font-weight:700;font-size:13px;color:#15323f;display:flex;align-items:center;gap:6px;line-height:1.05;}
+  .feat ul{list-style:none;margin-top:5px;}
+  .feat li{font-size:9.5px;line-height:1.3;padding-left:11px;position:relative;margin-bottom:3px;}
+  .feat li::before{content:"";position:absolute;left:0;top:5px;width:4px;height:4px;border-radius:50%;background:var(--acc);}
+  .feat.net{border-left-color:var(--net);} .feat.net li::before{background:var(--net);}
+  .feat.rec{border-left-color:var(--rec);} .feat.rec li::before{background:var(--rec);}
+  .feat.av{border-left-color:var(--av);}  .feat.av  li::before{background:var(--av);}
+
+  /* how-we-work steps */
+  .steps{list-style:none;counter-reset:s;margin-top:2px;}
+  .steps li{position:relative;padding-left:27px;font-size:10px;line-height:1.32;margin-bottom:8px;counter-increment:s;}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:-1px;width:19px;height:19px;border-radius:50%;background:linear-gradient(135deg,#1f6d6a,#2ca7bd);color:#fff;font-family:'Barlow Semi Condensed';font-weight:700;font-size:11px;text-align:center;line-height:19px;}
+  .steps li b{color:#15323f;}
+  /* mid CTA (inside center) */
+  .midcta{margin-top:13px;border-radius:9px;background:linear-gradient(150deg,#157a55,#1f6d6a);color:#fff;padding:13px 14px;}
+  .midcta .h{font-family:'Barlow Semi Condensed';font-weight:700;font-size:15px;}
+  .midcta .s{font-size:10px;margin-top:4px;color:#dafff5;line-height:1.4;}
+  .midcta .p{font-size:12.5px;font-weight:700;margin-top:8px;color:#fff;}
+
+  @media print{
+    @page{size:11in 8.5in landscape;margin:0;}
+    body{background:#fff;padding:0;gap:0;}
+    .label{display:none;}
+    .sheet{box-shadow:none;width:11in;height:8.5in;page-break-after:always;}
+    .sheet:last-of-type{page-break-after:auto;}
+  }
+</style>
+</head>
+<body>
+
+  <!-- ============ OUTSIDE SHEET ============ -->
+  <div class="label">OUTSIDE &mdash; prints on side 1 &nbsp;(L: back cover &middot; C: fold-in flap &middot; R: front cover)</div>
+  <div class="sheet">
+
+    <!-- BACK (left) -->
+    <div class="panel fold">
+      <div class="back-brand">ER <b>Tech</b> Services</div>
+      <div class="small" style="margin-top:3px">Expected Result Technical Services Corporation</div>
+      <div class="small" style="margin-top:14px;font-weight:600;color:#15323f">Serving Pemberton through the Fraser Valley to Hope, across Metro Vancouver, Vancouver Island, the Gulf Islands &amp; the Sunshine Coast.</div>
+      <p class="small" style="margin-top:12px">One trusted local partner for security, video, access, networks, AV and IT &mdash; from the first walkthrough to years of support.</p>
+
+      <div class="ctabox">
+        <div class="h">Let&rsquo;s schedule a walkthrough</div>
+        <div class="row"><b>Mobile</b>&nbsp; 778-246-2492</div>
+        <div class="row"><b>Office</b>&nbsp; 778-808-8769</div>
+        <div class="row"><b>Email</b>&nbsp; results@ertechservices.ca</div>
+        <div class="row"><b>Web</b>&nbsp; ertechservices.ca</div>
+      </div>
+      <div class="lic">Security Consultant Lic. #B7128 &middot; TSBC LIC-00214786 &middot; Langley, BC</div>
+    </div>
+
+    <!-- FLAP (center) -->
+    <div class="panel fold">
+      <div class="hookhead">
+        <div class="k">Did you know?</div>
+        <div class="t">Your security system could lower your insurance premiums</div>
+      </div>
+      <ul class="blist" style="margin-top:10px">
+        <li>Many Canadian insurers reduce <b>home &amp; business premiums</b> for professionally monitored systems.</li>
+        <li><b>ULC-certified monitoring</b> is the key to the biggest discounts &mdash; exactly what we provide.</li>
+        <li><b>Water-leak detection + automatic shutoff</b> (smart valve) is what insurers value most.</li>
+        <li>Ask us about the <b>monitoring certificate</b> you&rsquo;ll need to claim your discount.</li>
+      </ul>
+
+      <div class="ptitle" style="margin-top:12px;font-size:15px">Service &amp; Maintenance Plans</div>
+      <div class="small">Pick the response tier that fits your operation:</div>
+      <div class="tiers">
+        <div class="tier"><div class="b b-std"></div><div class="nm">Standard</div><div class="rt">Next business day</div></div>
+        <div class="tier"><div class="b b-pri"></div><div class="nm">Priority</div><div class="rt">Same-day</div></div>
+        <div class="tier prem"><div class="b b-prem"></div><div class="nm">Premium</div><div class="rt">4-hr &middot; 24/7</div></div>
+      </div>
+      <div class="small" style="margin-top:7px;font-style:italic">SMA clients always jump the queue ahead of non-contract calls.</div>
+    </div>
+
+    <!-- FRONT COVER (right) -->
+    <div class="panel dark">
+      <div class="cover-eyebrow">Expected Result Technical Services Corp.</div>
+      <div class="cover-brand">ER <b>Tech</b><br>Services</div>
+      <div class="cover-tag">Front door to back office &mdash; under one roof.</div>
+      <div class="cover-sub">Security &middot; Video &middot; Access &middot; Networks &middot; AV &middot; IT</div>
+      <div class="cover-foot">
+        Langley, BC &middot; ertechservices.ca<br>
+        Security Consultant Lic. #B7128 &middot; TSBC LIC-00214786
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============ INSIDE SHEET ============ -->
+  <div class="label">INSIDE &mdash; prints on side 2 &nbsp;(reads left &rarr; right when opened)</div>
+  <div class="sheet">
+
+    <!-- INSIDE 1: services part 1 -->
+    <div class="panel fold">
+      <div class="ptitle">Services Tailored to You</div>
+      <div class="prule"></div>
+      <div class="mcard c-sec"><div class="cap"><span class="i">&#x1F6E1;&#xFE0F;</span>Security &amp; Alarm</div>
+        <ul><li>Intrusion alarm &amp; 24/7 monitoring</li><li>Door &amp; window sensors</li><li>Emergency / duress button</li><li>After-hours protection</li></ul></div>
+      <div class="mcard c-vid"><div class="cap"><span class="i">&#x1F4F9;</span>Video Surveillance</div>
+        <ul><li>Entrance, floor &amp; parking cameras</li><li>POS-linked transaction video</li><li>Remote mobile viewing</li><li>Secure cloud or local storage</li></ul></div>
+      <div class="mcard c-acc"><div class="cap"><span class="i">&#x1F511;</span>Access Control</div>
+        <ul><li>Keypad, fob &amp; keyless entry</li><li>Access levels per area</li><li>Audit trail &amp; access logs</li><li>After-hours lockdown</li></ul></div>
+      <div class="feat net">
+        <div class="ft">&#x1F310; Managed Connectivity</div>
+        <ul>
+          <li>Redundant managed internet with automatic dual-WAN failover</li>
+          <li>Built for remote &amp; island BC properties</li>
+          <li>We watch the connection and keep you online</li>
+        </ul>
+      </div>
+      <div class="ptitle" style="margin-top:13px;font-size:15px">How We Work</div>
+      <div class="prule"></div>
+      <ul class="steps">
+        <li><b>On-site walkthrough</b> &amp; honest, no-pressure assessment</li>
+        <li><b>Right-sized design</b> &amp; clean, professional installation</li>
+        <li><b>Monitoring, support &amp; SMA</b> &mdash; we keep it running for years</li>
+      </ul>
+    </div>
+
+    <!-- INSIDE 2: services part 2 -->
+    <div class="panel fold">
+      <div class="ptitle" style="visibility:hidden">.</div>
+      <div class="prule" style="visibility:hidden"></div>
+      <div class="mcard c-net"><div class="cap"><span class="i">&#x1F310;</span>Network &amp; IT</div>
+        <ul><li>Structured cabling &amp; clean racks</li><li>Staff &amp; guest Wi-Fi; POS connectivity</li><li>Switching, segmentation, endpoints</li><li>Help-desk &amp; ongoing IT support</li></ul></div>
+      <div class="mcard c-rec"><div class="cap"><span class="i">&#x1F5A5;&#xFE0F;</span>Front Desk &amp; Workspace</div>
+        <ul><li>POS &amp; workstation setup</li><li>Display &amp; digital signage TVs</li><li>Scheduled messaging &amp; info boards</li><li>Intercom &amp; paging</li></ul></div>
+      <div class="mcard c-av"><div class="cap"><span class="i">&#x1F50A;</span>AV, Audio &amp; Conference</div>
+        <ul><li>Displays; Teams / Zoom Rooms</li><li>Wireless presentation</li><li>Zoned music &amp; scheduled announcements</li><li>One-touch room control</li></ul></div>
+      <div class="feat rec">
+        <div class="ft">&#x1F4E1; Remote Monitoring &amp; Auto-Recovery</div>
+        <ul>
+          <li>24/7 remote monitoring of cameras &amp; systems</li>
+          <li>Auto-recovery restarts devices before you notice</li>
+          <li>Proactive alerts the moment something drifts</li>
+        </ul>
+      </div>
+      <div class="midcta" style="display:flex;align-items:center;gap:12px">
+        <div style="flex:1">
+          <div class="h">Book a free on-site walkthrough</div>
+          <div class="s">We&rsquo;ll assess your space and show you what fits &mdash; including Managed Connectivity for remote &amp; island sites.</div>
+          <div class="p">778-246-2492 &middot; ertechservices.ca</div>
+        </div>
+        <div style="text-align:center;flex-shrink:0">
+          <img src="data:image/png;base64,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" alt="Scan to save our contact" style="width:86px;height:86px;display:block;border-radius:6px;background:#fff;padding:4px">
+          <div style="font-size:8px;color:#dafff5;margin-top:3px;line-height:1.15">Scan to save<br>our contact</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INSIDE 3: industries + why -->
+    <div class="panel">
+      <div class="ptitle">Industries We Serve</div>
+      <div class="prule"></div>
+      <ul class="blist">
+        <li><b>Restaurants &amp; Fast Food</b> &mdash; register/drive-thru video, kitchen monitoring, zoned audio</li>
+        <li><b>Pet Stores &amp; Retail</b> &mdash; floor &amp; POS cameras, stockroom security, in-store music</li>
+        <li><b>Local &amp; Small Business</b> &mdash; right-sized security, cameras &amp; Wi-Fi</li>
+        <li><b>Clinics &amp; Healthcare</b> &mdash; privacy-aware video, isolated clinical networks</li>
+        <li><b>Schools &amp; Campuses</b> &mdash; enterprise video, HALO vape sensing, campus IT</li>
+      </ul>
+
+      <div class="ptitle" style="margin-top:13px">Why ER Tech</div>
+      <div class="prule"></div>
+      <ul class="blist">
+        <li>One trusted partner under one roof</li>
+        <li>Licensed &amp; ULC-monitored; honest, right-sized advice</li>
+        <li>Control4, Crestron, Lutron, Alarm.com, Hikvision, DSC, UniFi, HALO</li>
+        <li>Ongoing support &amp; Service &amp; Maintenance Agreements</li>
+      </ul>
+
+      <div class="feat av">
+        <div class="ft">&#x1F501; Recurring Peace of Mind</div>
+        <ul>
+          <li>Monthly system-health reporting</li>
+          <li>One plan: monitoring, maintenance &amp; connectivity</li>
+        </ul>
+      </div>
+
+      <div class="feat">
+        <div class="ft">&#x2705; Licensed &amp; Certified</div>
+        <ul>
+          <li>Security Consultant Lic. #B7128</li>
+          <li>TSBC LIC-00214786</li>
+          <li>ULC-certified monitoring partner</li>
+        </ul>
+      </div>
+
+      <div class="ctabox" style="margin-top:auto;padding:11px 13px">
+        <div class="h" style="font-size:14px">Ready when you are</div>
+        <div class="row"><b>778-246-2492</b> &middot; results@ertechservices.ca</div>
+      </div>
+    </div>
+
+  </div>
+
+<style>
+  .no-print{position:fixed;bottom:20px;right:20px;z-index:99999;font-family:'Barlow Semi Condensed',Arial,sans-serif;font-weight:700;font-size:15px;letter-spacing:.3px;color:#fff;background:#137DC5;border:none;border-radius:10px;padding:12px 18px;box-shadow:0 4px 14px rgba(0,0,0,.28);cursor:pointer;}
+  .no-print:hover{background:#0f63a0;}
+  @media print{ .no-print{display:none !important;} }
+</style>
+<button class="no-print" onclick="window.print()">&#x2913;&nbsp; Save as PDF</button>
+</body>
+</html>

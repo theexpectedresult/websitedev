@@ -1,0 +1,26 @@
+<!-- @dsCard group="Brand" viewport="700x170" name="App Icons & QR" subtitle="Favicons, app icon, contact QR codes" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  body { margin: 0; font-family: var(--font-sans); background: var(--bg-page); }
+  .row { display: flex; align-items: center; gap: var(--space-6); padding: var(--space-5); }
+  .s { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .s img { border-radius: var(--radius-md); }
+  .lab { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); }
+  .div { width: 1px; align-self: stretch; background: var(--divider); }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="s"><img src="../../assets/icons/ertech-favicon-32.png" width="32" height="32" alt="favicon 32" /><span class="lab">32</span></div>
+    <div class="s"><img src="../../assets/icons/ertech-favicon-192.png" width="56" height="56" alt="favicon 192" /><span class="lab">192</span></div>
+    <div class="s"><img src="../../assets/icons/apple-touch-icon-180.png" width="64" height="64" alt="apple touch" /><span class="lab">apple 180</span></div>
+    <div class="div"></div>
+    <div class="s"><img src="../../assets/qr/qr-contact-branded.svg" width="84" height="84" alt="branded QR" /><span class="lab">vCard · branded</span></div>
+    <div class="s"><img src="../../assets/qr/qr-contact-url.svg" width="84" height="84" alt="url QR" /><span class="lab">Website URL</span></div>
+  </div>
+</body>
+</html>

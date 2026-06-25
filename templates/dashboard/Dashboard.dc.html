@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Operations Dashboard" description="Internal app screen — KPIs, work-order table, device fleet" -->
+<helmet>
+  <script src="./ds-base.js"></script>
+  <style>
+    body { margin: 0; background: var(--bg-subtle); }
+  </style>
+</helmet>
+<div style="display: flex; height: 760px; font-family: var(--font-sans); background: var(--bg-subtle); overflow: hidden;">
+
+  <aside style="width: 230px; flex: none; background: var(--surface-dark); color: var(--text-on-dark); display: flex; flex-direction: column; padding: 24px 12px; box-sizing: border-box;">
+    <div style="display: flex; align-items: center; gap: 10px; padding: 0 8px 24px;">
+      <img src="./ertech-favicon-192.png" alt="" style="height: 32px;" />
+      <div style="color: #fff; font-weight: 700; font-size: 16px; line-height: 1;">ER Tech<br/><span style="font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.6);">Operations</span></div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 2px;">
+      <div style="display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px; background: rgba(57,198,192,0.18); color: #fff; font-weight: 600; font-size: 14px;">Dashboard</div>
+      <div style="display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px; color: rgba(255,255,255,0.72); font-weight: 500; font-size: 14px;">Work orders</div>
+      <div style="display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px; color: rgba(255,255,255,0.72); font-weight: 500; font-size: 14px;">Devices</div>
+      <div style="display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px; color: rgba(255,255,255,0.72); font-weight: 500; font-size: 14px;">Clients</div>
+      <div style="display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px; color: rgba(255,255,255,0.72); font-weight: 500; font-size: 14px;">Settings</div>
+    </div>
+    <div style="margin-top: auto; padding: 12px; border-radius: 8px; background: rgba(255,255,255,0.05); display: flex; align-items: center; gap: 12px;">
+      <x-import component-from-global-scope="ERTechServicesDesignSystem_dceeff.Avatar" name="Dana Kessler" size="36" hint-size="36px,36px"></x-import>
+      <div style="font-size: 12px;"><div style="color: #fff; font-weight: 600;">Dana Kessler</div><div style="color: rgba(255,255,255,0.55);">Lead integrator</div></div>
+    </div>
+  </aside>
+
+  <div style="flex: 1; display: flex; flex-direction: column; overflow: hidden;">
+    <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px 28px; background: var(--paper); border-bottom: 1px solid var(--line);">
+      <h1 style="font-family: var(--font-display); font-weight: 700; font-size: 24px; color: var(--ink); margin: 0;">Dashboard</h1>
+      <div style="width: 280px;"><x-import component-from-global-scope="ERTechServicesDesignSystem_dceeff.Input" placeholder="Search work orders, sites…" hint-size="280px,42px"></x-import></div>
+    </div>
+
+    <div style="flex: 1; overflow: auto; padding: 24px 28px; display: flex; flex-direction: column; gap: 20px;">
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+        <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+          <div style="background: var(--paper); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 1px 3px rgba(26,34,48,0.08); padding: 18px;">
+            <x-import component-from-global-scope="ERTechServicesDesignSystem_dceeff.Stat" label="{{ s.label }}" value="{{ s.value }}" delta="{{ s.delta }}" delta-tone="{{ s.tone }}" hint-size="100%,70px"></x-import>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px; align-items: start;">
+        <div style="background: var(--paper); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 1px 3px rgba(26,34,48,0.08); padding: 20px;">
+          <h3 style="font-family: var(--font-display); font-weight: 700; font-size: 18px; color: var(--ink); margin: 0 0 8px;">Work orders</h3>
+          <sc-for list="{{ workOrders }}" as="w" hint-placeholder-count="5">
+            <div style="display: grid; grid-template-columns: 86px 1fr 120px; gap: 12px; align-items: center; padding: 11px 0; border-top: 1px solid var(--line);">
+              <span style="font-family: var(--font-mono); font-size: 13px; color: var(--text-muted);">{{ w.id }}</span>
+              <span style="font-size: 14px; color: var(--ink);">{{ w.title }}</span>
+              <span style="justify-self: end;"><x-import component-from-global-scope="ERTechServicesDesignSystem_dceeff.StatusChip" status="{{ w.status }}" hint-size="104px,24px">{{ w.statusLabel }}</x-import></span>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="background: var(--paper); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 1px 3px rgba(26,34,48,0.08); padding: 20px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+            <h3 style="font-family: var(--font-display); font-weight: 700; font-size: 18px; color: var(--ink); margin: 0;">Device fleet</h3>
+            <x-import component-from-global-scope="ERTechServicesDesignSystem_dceeff.Badge" tone="soft" hint-size="64px,22px">99% up</x-import>
+          </div>
+          <sc-for list="{{ devices }}" as="d" hint-placeholder-count="4">
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-top: 1px solid var(--line);">
+              <div><div style="font-size: 14px; font-weight: 600; color: var(--ink);">{{ d.name }}</div><div style="font-size: 12px; color: var(--text-muted);">{{ d.kind }}</div></div>
+              <span style="font-family: var(--font-mono); font-size: 13px; color: var(--text-body);">{{ d.online }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1240, &quot;height&quot;: 760}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      stats: [
+        { label: "Open work orders", value: "12", delta: "+3 this week", tone: "up" },
+        { label: "Devices online", value: "319", delta: "of 322", tone: "flat" },
+        { label: "Needs attention", value: "2", delta: "1 blocked · 1 parts", tone: "down" },
+        { label: "Closed this month", value: "47", delta: "+11 vs last", tone: "up" },
+      ],
+      workOrders: [
+        { id: "WO-2041", title: "Avigilon 12-cam retrofit — Harbour Logistics", status: "complete", statusLabel: "Installed" },
+        { id: "WO-2044", title: "Control4 boardroom — Westview", status: "progress", statusLabel: "In progress" },
+        { id: "WO-2049", title: "Access control — 6 doors, Pinetree", status: "parts", statusLabel: "Needs parts" },
+        { id: "WO-2050", title: "Alarm panel swap — Birch Dental", status: "blocked", statusLabel: "Blocked" },
+        { id: "WO-2052", title: "Network rack tidy — Cedar Eatery", status: "info", statusLabel: "Scheduled" },
+      ],
+      devices: [
+        { name: "Avigilon H5A", kind: "Cameras", online: "248/250" },
+        { name: "DSC PowerSeries", kind: "Alarm panels", online: "31/31" },
+        { name: "Araknis AN-310", kind: "Network switches", online: "18/19" },
+        { name: "Control4 EA-5", kind: "Controllers", online: "22/22" },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

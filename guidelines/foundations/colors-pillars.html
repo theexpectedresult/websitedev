@@ -1,0 +1,27 @@
+<!-- @dsCard group="Colors" viewport="700x170" name="Six Pillar Accents" subtitle="sec · vid · acc · net · rec · av" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  body { margin: 0; font-family: var(--font-body); background: var(--paper); }
+  .grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--space-3); padding: var(--space-5); }
+  .cell { border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden; }
+  .chip { height: 56px; }
+  .meta { padding: var(--space-2) var(--space-3); }
+  .name { font-size: var(--fs-xs); font-weight: 600; color: var(--ink); }
+  .hex { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); }
+</style>
+</head>
+<body>
+  <div class="grid">
+    <div class="cell"><div class="chip" style="background:var(--sec)"></div><div class="meta"><div class="name">Security</div><div class="hex">#214A5F</div></div></div>
+    <div class="cell"><div class="chip" style="background:var(--vid)"></div><div class="meta"><div class="name">Video</div><div class="hex">#B07514</div></div></div>
+    <div class="cell"><div class="chip" style="background:var(--acc)"></div><div class="meta"><div class="name">Access</div><div class="hex">#1F8A6D</div></div></div>
+    <div class="cell"><div class="chip" style="background:var(--net)"></div><div class="meta"><div class="name">Network</div><div class="hex">#3B3F8F</div></div></div>
+    <div class="cell"><div class="chip" style="background:var(--rec)"></div><div class="meta"><div class="name">Front Desk</div><div class="hex">#1F8AA0</div></div></div>
+    <div class="cell"><div class="chip" style="background:var(--av)"></div><div class="meta"><div class="name">AV / Audio</div><div class="hex">#6A2A6E</div></div></div>
+  </div>
+</body>
+</html>

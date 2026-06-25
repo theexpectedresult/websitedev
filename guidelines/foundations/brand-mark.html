@@ -1,0 +1,24 @@
+<!-- @dsCard group="Brand" viewport="700x180" name="The ER Mark" subtitle="Full color, mono, and reversed on navy" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  body { margin: 0; font-family: var(--font-sans); background: var(--bg-page); }
+  .row { display: flex; gap: var(--space-4); padding: var(--space-5); }
+  .cell { flex: 1; border: 1px solid var(--border); border-radius: var(--radius-lg); height: 110px; display: flex; align-items: center; justify-content: center; }
+  .cell img { height: 64px; }
+  .navy { background: var(--surface-dark); border-color: var(--surface-dark); }
+  .soft { background: var(--brand-gradient-soft); }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="cell"><img src="../../assets/logos/ertech-mark.svg" alt="ER mark" /></div>
+    <div class="cell soft"><img src="../../assets/logos/ertech-mark.svg" alt="ER mark on soft" /></div>
+    <div class="cell"><img src="../../assets/logos/ertech-mark-mono.svg" alt="ER mark mono (black)" /></div>
+    <div class="cell navy"><img src="../../assets/logos/ertech-mark-mono.svg" alt="ER mark reversed white" style="filter:brightness(0) invert(1)" /></div>
+  </div>
+</body>
+</html>

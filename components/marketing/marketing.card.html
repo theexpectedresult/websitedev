@@ -1,0 +1,44 @@
+<!-- @dsCard group="Components" viewport="760x720" name="Marketing — Pamphlet Kit" subtitle="ServiceCard, SmaTiers, IntroBanner, SectionHeading" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  body { margin: 0; font-family: var(--font-body); background: var(--paper); }
+  .wrap { padding: var(--space-5); display: flex; flex-direction: column; gap: var(--space-5); }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+</style>
+</head>
+<body>
+  <div id="root" class="wrap"></div>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+  <script src="../../_ds_bundle.js"></script>
+  <script type="text/babel">
+    const { ServiceCard, SmaTiers, IntroBanner, SectionHeading } = window.ERTechServicesDesignSystem_dceeff;
+    function LI({ name }) {
+      const r = React.useRef(null);
+      React.useEffect(() => { if (r.current && window.lucide) { r.current.innerHTML=""; const i=document.createElement("i"); i.setAttribute("data-lucide",name); r.current.appendChild(i); window.lucide.createIcons({ attrs:{ width:20, height:20, stroke:"#fff", "stroke-width":2 } }); } }, [name]);
+      return <span ref={r} style={{ display:"inline-flex", width:20, height:20 }} />;
+    }
+    function Demo() {
+      return (
+        <>
+          <IntroBanner icon={<span>🏢</span>}>As your technology partner, we handle it all under one roof — from the front entrance to the back office.</IntroBanner>
+          <SectionHeading>Services tailored to your business</SectionHeading>
+          <div className="grid3">
+            <ServiceCard accent="sec" icon={<LI name="shield" />} title="Security & Alarm" items={["Intrusion alarm system","Door & window sensors","24/7 monitored service","Duress button at point of sale"]} />
+            <ServiceCard accent="vid" icon={<LI name="video" />} title="Video Surveillance" items={["Entrance, lobby & sales-floor cameras","Parking & exit coverage","POS-linked transaction video","Remote mobile viewing"]} />
+            <ServiceCard accent="acc" icon={<LI name="key-round" />} title="Access Control" items={["Keypad, fob & keyless entry","Access levels per area","Audit trail & logs","After-hours lockdown"]} />
+          </div>
+          <SmaTiers note="SMA clients always jump the queue ahead of non-contract calls." />
+        </>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<Demo />);
+  </script>
+</body>
+</html>

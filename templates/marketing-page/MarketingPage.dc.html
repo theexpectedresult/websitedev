@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Marketing Page" description="Web landing page — hero, six service pillars, SMA tiers, CTA" -->
+<helmet>
+  <script src="./ds-base.js"></script>
+  <style>
+    body { margin: 0; background: var(--paper); }
+  </style>
+</helmet>
+<div style="font-family: var(--font-body); color: var(--ink); background: var(--paper);">
+
+  <div style="background: var(--grad-header-left); color: #fff;">
+    <div style="max-width: 1080px; margin: 0 auto; padding: 64px 40px; display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 48px; align-items: center;">
+      <div>
+        <div style="font-family: var(--font-body); font-weight: 700; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brand);">Expected Result Technical Services Corporation</div>
+        <h1 style="font-family: var(--font-display); font-weight: 700; font-size: 52px; line-height: 1.04; margin: 12px 0 16px;">Front door to back office — under one roof.</h1>
+        <p style="font-size: 18px; line-height: 1.5; color: rgba(255,255,255,0.9); max-width: 520px; margin: 0 0 24px;">One trusted partner for commercial security, video, access, networks, front-desk and AV — designed, installed and maintained to a single standard across Greater Vancouver.</p>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <x-import component-from-global-scope="ERTechServicesDesignSystem_dceeff.Button" variant="primary" size="lg" hint-size="190px,48px">Book a walkthrough</x-import>
+          <x-import component-from-global-scope="ERTechServicesDesignSystem_dceeff.Button" variant="outline" size="lg" hint-size="150px,48px">See services</x-import>
+        </div>
+      </div>
+      <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 32px;">
+        <img src="./ertech-mark-mono.svg" alt="ER" style="height: 56px; filter: brightness(0) invert(1); margin-bottom: 16px;" />
+        <div style="font-family: var(--font-display); font-weight: 700; font-size: 24px; line-height: 1.15; margin-bottom: 8px;">Six disciplines.<br/>One accountable team.</div>
+        <p style="font-size: 14px; color: rgba(255,255,255,0.82); margin: 0;">Control4 · Crestron · Avigilon · DSC · Alarm.com · Araknis — integrated under one roof.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width: 1080px; margin: 0 auto; padding: 64px 40px;">
+    <x-import component-from-global-scope="ERTechServicesDesignSystem_dceeff.SectionHeading" hint-size="100%,56px">Services tailored to your business</x-import>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px;">
+      <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="6">
+        <x-import component-from-global-scope="ERTechServicesDesignSystem_dceeff.ServiceCard" accent="{{ p.accent }}" title="{{ p.title }}" items="{{ p.items }}" hint-size="100%,250px"></x-import>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="background: var(--bg-subtle); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+    <div style="max-width: 1080px; margin: 0 auto; padding: 56px 40px;">
+      <h2 style="font-family: var(--font-display); font-weight: 700; font-size: 30px; color: var(--ink); margin: 0 0 6px;">Service &amp; Maintenance Agreements</h2>
+      <p style="font-size: 15px; color: var(--text-body); margin: 0 0 24px; max-width: 620px;">Pick the response tier that fits the site. SMA clients always jump the queue ahead of non-contract calls.</p>
+      <x-import component-from-global-scope="ERTechServicesDesignSystem_dceeff.SmaTiers" note="SMA clients always jump the queue ahead of non-contract calls." hint-size="100%,170px"></x-import>
+    </div>
+  </div>
+
+  <div style="max-width: 1080px; margin: 0 auto; padding: 56px 40px;">
+    <div style="background: var(--grad-header-left); color: #fff; border-radius: 16px; padding: 36px 40px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+      <div>
+        <div style="font-family: var(--font-display); font-weight: 700; font-size: 28px; line-height: 1.1;">Ready to scope your site?</div>
+        <div style="font-size: 15px; color: rgba(255,255,255,0.85); margin-top: 6px;">Book a walkthrough — we reply within one business day.</div>
+      </div>
+      <x-import component-from-global-scope="ERTechServicesDesignSystem_dceeff.Button" variant="outline" size="lg" hint-size="190px,48px">Book a walkthrough</x-import>
+    </div>
+  </div>
+
+  <div style="background: var(--grad-footer); color: rgba(255,255,255,0.82);">
+    <div style="max-width: 1080px; margin: 0 auto; padding: 40px; display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; font-size: 14px;">
+      <div>
+        <img src="./ertech-logo-tech-services.svg" alt="ER Tech Services" style="height: 40px; filter: brightness(0) invert(1); opacity: 0.95; margin-bottom: 10px;" />
+        <div>Langley, BC · Office 778-808-8769 · results@ertechservices.ca</div>
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 12px; text-align: right; line-height: 1.7;">Security Consultant Lic. #B7128<br/>TSBC LIC-00214786</div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1080, &quot;height&quot;: 760}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      pillars: [
+        { accent: "sec", title: "Security & Alarm", items: ["Intrusion alarm system", "Door & window sensors", "24/7 monitored service", "After-hours premises protection"] },
+        { accent: "vid", title: "Video Surveillance", items: ["Entrance, lobby & floor cameras", "Entry, exit & parking coverage", "Remote mobile viewing", "Secure cloud / local storage"] },
+        { accent: "acc", title: "Access Control", items: ["Keypad, fob & keyless entry", "Separate access levels per area", "Audit trail & access logs", "After-hours lockdown capability"] },
+        { accent: "net", title: "Network Infrastructure", items: ["Structured cabling throughout", "Separate staff & guest Wi-Fi", "POS & device connectivity", "Clean rack / closet buildout"] },
+        { accent: "rec", title: "Front Desk & Workspace", items: ["POS system & setup", "Workstation connectivity", "Display & signage TVs", "Intercom & paging"] },
+        { accent: "av", title: "AV, Audio & Conference", items: ["TV & display installation", "Teams / Zoom Rooms", "Zoned background music & paging", "One-touch room control"] },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

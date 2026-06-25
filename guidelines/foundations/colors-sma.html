@@ -1,0 +1,26 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="SMA Response Tiers" subtitle="Standard · Priority · Premium (gold)" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  body { margin: 0; font-family: var(--font-body); background: var(--paper); }
+  .row { display: flex; gap: var(--space-4); padding: var(--space-5); }
+  .t { flex: 1; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--line); background: var(--paper); }
+  .t.premium { border: 2px solid var(--sma-premium); box-shadow: 0 6px 18px rgba(202,162,51,0.22); }
+  .cap { height: 6px; }
+  .body { padding: var(--space-4); }
+  .name { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-xl); color: var(--ink); }
+  .resp { font-size: var(--fs-sm); color: var(--text-body); margin-top: 2px; }
+  .hex { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); margin-top: 6px; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="t"><div class="cap" style="background:var(--sma-standard)"></div><div class="body"><div class="name">Standard</div><div class="resp">Next business day</div><div class="hex">#8AA6BB</div></div></div>
+    <div class="t"><div class="cap" style="background:var(--sma-priority)"></div><div class="body"><div class="name">Priority</div><div class="resp">Same-day response</div><div class="hex">#2F8FC0</div></div></div>
+    <div class="t premium"><div class="cap" style="background:var(--sma-premium)"></div><div class="body"><div class="name">Premium</div><div class="resp">4-hr · 24/7</div><div class="hex">#CAA233 · top tier</div></div></div>
+  </div>
+</body>
+</html>

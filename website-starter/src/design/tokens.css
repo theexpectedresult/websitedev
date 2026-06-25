@@ -1,0 +1,55 @@
+/* src/design/tokens.css
+   Design tokens lifted verbatim from the ER Tech Services pamphlets.
+   This is the single source of truth for colour + type. Components and the
+   printed one-pagers both read from these values, so web and print never drift. */
+
+:root {
+  /* Surfaces & text */
+  --ink:   #1a2230;   /* body text */
+  --line:  #d8dde6;   /* hairlines / card borders */
+  --paper: #ffffff;
+
+  /* Six service-pillar accents (bullet dots + flat fallback) */
+  --sec: #214a5f;     /* Security & Alarm        — teal/navy */
+  --vid: #b07514;     /* Video Surveillance      — amber */
+  --acc: #1f8a6d;     /* Access Control          — green */
+  --net: #3b3f8f;     /* Network Infrastructure  — indigo */
+  --rec: #1f8aa0;     /* Front Desk / Reception  — cyan */
+  --av:  #6a2a6e;     /* AV, Audio & Conference  — purple */
+
+  /* Brand accent — the "Tech" in the wordmark, links, highlights */
+  --brand: #39c6c0;
+
+  /* Pillar cap gradients (the coloured header bar on each card) */
+  --cap-sec: linear-gradient(120deg, #15323f, #2f5f70);
+  --cap-vid: linear-gradient(120deg, #9a5f10, #caa233);
+  --cap-acc: linear-gradient(120deg, #157a55, #37a98a);
+  --cap-net: linear-gradient(120deg, #2c2f73, #5258b0);
+  --cap-rec: linear-gradient(120deg, #176a7e, #2ca7bd);
+  --cap-av:  linear-gradient(120deg, #4b1d54, #8a3a90);
+
+  /* Section gradients */
+  --grad-header-left:  linear-gradient(120deg, #0f2c33, #1f6d6a 60%, #1f6d6a);
+  --grad-header-right: linear-gradient(120deg, #33414f, #536271);
+  --grad-intro:        linear-gradient(120deg, #c2731a, #7a3f7e 55%, #2f3f86);
+  --grad-footer:       linear-gradient(120deg, #14202b, #1d2c3a);
+  --grad-rule:         linear-gradient(90deg, #1f8a6d, #3b3f8f 50%, #6a2a6e);
+
+  /* SMA response tiers */
+  --sma-standard: #8aa6bb;
+  --sma-priority: #2f8fc0;
+  --sma-premium:  #caa233;  /* top tier — gold */
+
+  /* Type */
+  --font-display: "Barlow Semi Condensed", system-ui, sans-serif; /* headings, wordmark, card caps */
+  --font-body:    "Barlow", system-ui, sans-serif;                /* body copy */
+}
+
+/* Accent helper: set data-accent="sec|vid|acc|net|rec|av" to pull the matching
+   bullet colour + cap gradient on a ServiceCard. */
+[data-accent="sec"] { --accent: var(--sec); --cap: var(--cap-sec); }
+[data-accent="vid"] { --accent: var(--vid); --cap: var(--cap-vid); }
+[data-accent="acc"] { --accent: var(--acc); --cap: var(--cap-acc); }
+[data-accent="net"] { --accent: var(--net); --cap: var(--cap-net); }
+[data-accent="rec"] { --accent: var(--rec); --cap: var(--cap-rec); }
+[data-accent="av"]  { --accent: var(--av);  --cap: var(--cap-av);  }

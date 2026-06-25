@@ -1,0 +1,9 @@
+/* ER Tech Services — Webfonts
+   CANONICAL (marketing + print, lifted from the pamphlets):
+     Headings/wordmark/card-caps: Barlow Semi Condensed (500/600/700)
+     Body/UI: Barlow (400/500/600/700)
+   Utility:
+     Mono (codes, licences, specs): JetBrains Mono
+     Legacy/internal docs (Word/Excel parity): Inter */
+
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Semi+Condensed:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap");

@@ -1,0 +1,33 @@
+<!-- @dsCard group="Colors" viewport="700x140" name="Neutrals (Slate)" subtitle="Clean technical grays" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  body { margin: 0; font-family: var(--font-sans); background: var(--bg-page); }
+  .ramp { display: flex; padding: var(--space-5); }
+  .step { flex: 1; }
+  .chip { height: 64px; }
+  .lab { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); text-align: center; padding-top: 6px; }
+  .first .chip { border-radius: var(--radius-md) 0 0 var(--radius-md); }
+  .last .chip { border-radius: 0 var(--radius-md) var(--radius-md) 0; }
+  .chip.brd { box-shadow: inset 0 0 0 1px var(--border); }
+</style>
+</head>
+<body>
+  <div class="ramp">
+    <div class="step first"><div class="chip brd" style="background:var(--white)"></div><div class="lab">white</div></div>
+    <div class="step"><div class="chip brd" style="background:var(--gray-50)"></div><div class="lab">50</div></div>
+    <div class="step"><div class="chip" style="background:var(--gray-100)"></div><div class="lab">100</div></div>
+    <div class="step"><div class="chip" style="background:var(--gray-200)"></div><div class="lab">200</div></div>
+    <div class="step"><div class="chip" style="background:var(--gray-300)"></div><div class="lab">300</div></div>
+    <div class="step"><div class="chip" style="background:var(--gray-400)"></div><div class="lab">400</div></div>
+    <div class="step"><div class="chip" style="background:var(--gray-500)"></div><div class="lab">500</div></div>
+    <div class="step"><div class="chip" style="background:var(--gray-600)"></div><div class="lab">600</div></div>
+    <div class="step"><div class="chip" style="background:var(--gray-700)"></div><div class="lab">700</div></div>
+    <div class="step"><div class="chip" style="background:var(--gray-800)"></div><div class="lab">800</div></div>
+    <div class="step last"><div class="chip" style="background:var(--gray-900)"></div><div class="lab">900</div></div>
+  </div>
+</body>
+</html>

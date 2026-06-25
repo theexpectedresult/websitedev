@@ -1,0 +1,108 @@
+/* ER Tech Services — CANONICAL BRAND TOKENS
+   Lifted verbatim from the ER Tech Services pamphlets — the single source of
+   truth shared by web and print so the two never drift.
+   (Imported LAST from styles.css so it wins over the legacy/internal palette.) */
+
+:root {
+  /* ---- Surfaces & text ---- */
+  --ink:   #1a2230;   /* body text / headings on light */
+  --line:  #d8dde6;   /* hairlines / card borders */
+  --paper: #ffffff;
+
+  /* ---- Six service-pillar accents (bullet dots + flat fallback) ---- */
+  --sec: #214a5f;     /* Security & Alarm        — teal/navy */
+  --vid: #b07514;     /* Video Surveillance      — amber */
+  --acc: #1f8a6d;     /* Access Control          — green */
+  --net: #3b3f8f;     /* Network Infrastructure  — indigo */
+  --rec: #1f8aa0;     /* Front Desk / Reception  — cyan */
+  --av:  #6a2a6e;     /* AV, Audio & Conference  — purple */
+
+  /* ---- Brand accent — the "Tech" in the wordmark, links, highlights ---- */
+  --brand: #39c6c0;
+  --brand-deep: #1f6d6a;   /* darker teal for links/text on white */
+
+  /* ---- Pillar cap gradients (the coloured header bar on each ServiceCard) ---- */
+  --cap-sec: linear-gradient(120deg, #15323f, #2f5f70); /* @kind color */
+  --cap-vid: linear-gradient(120deg, #9a5f10, #caa233); /* @kind color */
+  --cap-acc: linear-gradient(120deg, #157a55, #37a98a); /* @kind color */
+  --cap-net: linear-gradient(120deg, #2c2f73, #5258b0); /* @kind color */
+  --cap-rec: linear-gradient(120deg, #176a7e, #2ca7bd); /* @kind color */
+  --cap-av:  linear-gradient(120deg, #4b1d54, #8a3a90); /* @kind color */
+
+  /* ---- Section gradients ---- */
+  --grad-header-left:  linear-gradient(120deg, #0f2c33, #1f6d6a 60%, #1f6d6a); /* @kind color */
+  --grad-header-right: linear-gradient(120deg, #33414f, #536271); /* @kind color */
+  --grad-intro:        linear-gradient(120deg, #c2731a, #7a3f7e 55%, #2f3f86); /* @kind color */
+  --grad-footer:       linear-gradient(120deg, #14202b, #1d2c3a); /* @kind color */
+  --grad-rule:         linear-gradient(90deg, #1f8a6d, #3b3f8f 50%, #6a2a6e); /* @kind color */
+
+  /* ---- SMA response tiers ---- */
+  --sma-standard: #8aa6bb;
+  --sma-priority: #2f8fc0;
+  --sma-premium:  #caa233;  /* top tier — gold */
+
+  /* ---- Type (canonical) ---- */
+  --font-display: "Barlow Semi Condensed", system-ui, sans-serif; /* @kind font */
+  --font-body:    "Barlow", system-ui, sans-serif; /* @kind font */
+  --font-sans:    "Barlow", system-ui, sans-serif; /* @kind font */
+  --font-docs:    "Inter", "Segoe UI", Arial, sans-serif; /* @kind font */
+
+  /* ---- Semantic overrides (point the shared aliases at the real palette) ---- */
+  --bg-page:        var(--paper);
+  --surface-card:   var(--paper);
+  --text-strong:    var(--ink);
+  --text-body:      #39414f;
+  --text-muted:     #6b7686;
+  --border:         var(--line);
+  --border-strong:  #c2c9d4;
+  --divider:        var(--line);
+  --color-link:      var(--brand-deep);
+  --color-link-hover:#15514f;
+  --ring:           var(--brand);
+}
+
+/* ---- SHARED NEUTRALS, STATUS & ON-DARK ----
+   Folded in from the retired cyan/Inter palette so brand.css is the single
+   source of truth. Grays here are generic UI neutrals (not a brand colour). */
+:root {
+  --white: #ffffff;
+
+  --gray-50:  #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --gray-600: #475569;
+  --gray-700: #334155;
+  --gray-800: #1e293b;
+  --gray-900: #0f172a;
+
+  /* Brand teal tints + accent gradient (replace the old cyan tints/gradient) */
+  --brand-soft:     #e7f6f5; /* @kind color */
+  --brand-tint:     #c9e9e7; /* @kind color */
+  --brand-gradient: linear-gradient(120deg, #1f6d6a 0%, #39c6c0 100%); /* @kind color */
+
+  /* Extra surfaces / on-dark text */
+  --bg-subtle:      #f6f8fa;
+  --bg-muted:       var(--gray-100);
+  --surface-dark:   #14202b;
+  --text-on-dark:   #e8eef0;
+  --text-on-accent: #ffffff;
+
+  /* Status palette (project tracker + alerts) */
+  --success:   #1e7e34;  --success-surface:   #c6efce;
+  --warning:   #9c6500;  --warning-surface:   #fff2cc;
+  --attention: #b3541e;  --attention-surface: #fce4d6;
+  --danger:    #dc2626;  --danger-surface:    #fee2e2;
+  --info:      var(--brand-deep);  --info-surface: var(--brand-soft);
+}
+
+/* Accent helper: set data-accent="sec|vid|acc|net|rec|av" to pull the matching
+   bullet colour + cap gradient on a ServiceCard. */
+[data-accent="sec"] { --accent: var(--sec); --cap: var(--cap-sec); }
+[data-accent="vid"] { --accent: var(--vid); --cap: var(--cap-vid); }
+[data-accent="acc"] { --accent: var(--acc); --cap: var(--cap-acc); }
+[data-accent="net"] { --accent: var(--net); --cap: var(--cap-net); }
+[data-accent="rec"] { --accent: var(--rec); --cap: var(--cap-rec); }
+[data-accent="av"]  { --accent: var(--av);  --cap: var(--cap-av);  }

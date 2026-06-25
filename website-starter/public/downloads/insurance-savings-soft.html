@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ER Tech Services — Lower Your Insurance Premiums (soft)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap');
+  *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;}
+  :root{
+    --ink:#1a2230; --line:#d8dde6; --paper:#ffffff; --brand:#39c6c0;
+    --acc:#1f8a6d; --net:#3b3f8f;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Barlow',-apple-system,sans-serif;color:var(--ink);background:#0c1118;display:flex;justify-content:center;padding:24px;}
+  .sheet{width:760px;background:var(--paper);border-radius:16px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.5);position:relative;}
+  .sheet::after{content:"";position:absolute;inset:0;background:radial-gradient(360px 360px at 92% 22%,rgba(40,120,160,.06),transparent 70%),radial-gradient(320px 320px at 96% 82%,rgba(120,60,140,.06),transparent 70%);pointer-events:none;}
+  .pad{padding:30px 36px 26px;}
+  h1,h2,.tag,.brand,.stat .big{font-family:'Barlow Semi Condensed',sans-serif;letter-spacing:.2px;}
+
+  /* header */
+  .header{border-radius:13px;overflow:hidden;background:linear-gradient(120deg,#0f2c33,#1f6d6a 65%,#1f6d6a);color:#eafdfb;padding:18px 22px;}
+  .eyebrow{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#8fd8d0;font-weight:600;}
+  .headline{font-size:30px;font-weight:700;line-height:1.08;margin-top:4px;color:#fff;}
+
+  /* hook banner */
+  .hook{display:flex;align-items:center;gap:14px;margin-top:14px;padding:14px 18px;border-radius:12px;background:linear-gradient(120deg,#c2731a,#7a3f7e 55%,#2f3f86);color:#fff;font-size:15.5px;line-height:1.4;}
+  .hook .ic{font-size:30px;line-height:1;}
+
+  /* stat callout */
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px;}
+  .stat{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:linear-gradient(160deg,#eef7f3,#e2f0ea);}
+  .stat .big{font-size:30px;font-weight:700;color:var(--acc);line-height:1;}
+  .stat .lbl{font-size:13.5px;color:#2a3a47;margin-top:5px;line-height:1.3;}
+
+  /* body */
+  .body{margin-top:18px;}
+  .body h2{font-size:18px;font-weight:700;color:#15323f;margin:18px 0 6px;}
+  .body p{font-size:14.5px;line-height:1.5;margin-bottom:10px;}
+  .body p:first-child{margin-top:0;}
+
+  /* water-valve highlight */
+  .feature{margin-top:16px;border:1px solid #c7d6e6;border-left:5px solid var(--net);border-radius:10px;background:linear-gradient(160deg,#eef3fb,#dceaf6);padding:15px 18px;}
+  .feature h3{font-family:'Barlow Semi Condensed';font-weight:700;font-size:17px;color:#2c2f73;margin-bottom:5px;}
+  .feature p{font-size:14px;line-height:1.45;}
+
+  /* insurer chips */
+  .insurers{margin-top:16px;}
+  .insurers .lead{font-size:13px;color:#4a5a67;font-weight:600;margin-bottom:8px;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;color:#15323f;background:#fff;}
+
+  /* CTA */
+  .cta{margin-top:18px;border-radius:12px;background:linear-gradient(120deg,#157a55,#1f6d6a);color:#fff;padding:16px 20px;text-align:center;}
+  .cta .t{font-family:'Barlow Semi Condensed';font-weight:700;font-size:19px;}
+  .cta .s{font-size:14px;margin-top:4px;color:#dafff5;}
+
+  /* footer */
+  .footer{margin-top:20px;background:linear-gradient(120deg,#14202b,#1d2c3a);color:#dfe7ef;border-radius:10px;padding:13px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+  .brand{font-weight:700;font-size:22px;color:#fff;}
+  .brand b{color:var(--brand);}
+  .contact{font-size:12px;text-align:right;color:#c4d0db;line-height:1.5;}
+  .lic{font-size:10.5px;color:#9fb0c0;margin-top:3px;}
+
+  @media print{
+    @page{size:8.5in 11in portrait;margin:0.4in;}
+    body{background:#fff;padding:0;display:block;}
+    .sheet{box-shadow:none;border-radius:0;width:760px;zoom:0.98;}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+<div class="pad">
+
+  <div class="header">
+    <div class="eyebrow">ER Tech Services &middot; Expected Result Technical Services Corporation</div>
+    <div class="headline">Did you know your security system could lower your insurance premiums?</div>
+  </div>
+
+  <div class="hook">
+    <div class="ic">&#x1F6E1;&#xFE0F;</div>
+    <div>At ER Tech Services, we install more than just security &mdash; we install peace of mind that pays for itself.</div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="big" style="font-size:21px">Premium discounts</div><div class="lbl">Many Canadian insurers reduce home &amp; business premiums when a professionally monitored system is in place.</div></div>
+    <div class="stat"><div class="big" style="font-size:21px">Year after year</div><div class="lbl">Savings that can help offset the cost of your coverage, policy after policy.</div></div>
+  </div>
+
+  <div class="body">
+    <h2>Professional monitoring is the key</h2>
+    <p>Many Canadian insurance providers offer discounts on home and business insurance premiums when a professionally monitored security system is in place. The exact savings vary by insurer and policy &mdash; but the key to maximizing them is professional, third-party monitoring through a ULC-certified monitoring centre, exactly what ER Tech Services provides.</p>
+    <p>Insurers reward systems that actively reduce risk, and the more comprehensive your protection, the greater the potential savings. Systems that combine intrusion detection, fire monitoring, and environmental sensors such as water leak and freeze detectors tend to qualify for the strongest discounts.</p>
+
+    <h2>Water damage: the claim insurers fear most</h2>
+    <p>Water damage is one of the most costly insurance claims in Canada, and a growing number of insurers now recognize water leak detection devices with reduced premiums &mdash; particularly systems that can automatically shut off water at the source.</p>
+  </div>
+
+  <div class="feature">
+    <h3>&#x1F4A7; Detection + automatic shutoff &mdash; what insurers value most</h3>
+    <p>We install complete water protection solutions, including an inline smart water valve, which monitors for slow leaks and unexpected water usage and can automatically shut off your water supply before serious damage occurs. This level of protection &mdash; detection plus automatic shutoff &mdash; is exactly what insurers value most when applying premium discounts.</p>
+  </div>
+
+  <div class="body">
+    <p style="margin-top:16px">Whether you're protecting a home, a rental property, or a commercial space, ER Tech Services can design and install a monitored system that not only keeps your property safe but may help offset the cost of your insurance year after year. Ask your insurance provider about available discounts, and ask us about the monitoring certificate you'll need to claim them.</p>
+  </div>
+
+  <div class="cta">
+    <div class="t">Contact ER Tech Services today</div>
+    <div class="s">Find out what the right system looks like for your property &mdash; and what it could save you.</div>
+  </div>
+
+  <div class="footer">
+    <div>
+      <div class="brand">ER <b>Tech</b> Services</div>
+      <div class="lic">Security Consultant Lic. #B7128 &middot; TSBC LIC-00214786</div>
+    </div>
+    <div class="contact">
+      Langley, BC &nbsp;|&nbsp; Mobile: 778-246-2492 &nbsp;|&nbsp; Office: 778-808-8769<br>
+      results@ertechservices.ca &nbsp;|&nbsp; Let&rsquo;s schedule a walkthrough
+    </div>
+  </div>
+
+</div>
+</div>
+<style>
+  .no-print{position:fixed;bottom:20px;right:20px;z-index:99999;font-family:'Barlow Semi Condensed',Arial,sans-serif;font-weight:700;font-size:15px;letter-spacing:.3px;color:#fff;background:#137DC5;border:none;border-radius:10px;padding:12px 18px;box-shadow:0 4px 14px rgba(0,0,0,.28);cursor:pointer;}
+  .no-print:hover{background:#0f63a0;}
+  @media print{ .no-print{display:none !important;} }
+</style>
+<button class="no-print" onclick="window.print()">&#x2913;&nbsp; Save as PDF</button>
+</body>
+</html>
